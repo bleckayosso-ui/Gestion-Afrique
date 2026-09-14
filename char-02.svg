@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#EAF3FE"/>
+  <path d="M40 200c0-38 26-58 60-58s60 20 60 58z" fill="#20242B"/>
+  <path d="M64 166c9 6 20 9 36 9s27-3 36-9l-3 13c-9 5-20 8-33 8s-24-3-33-8z" fill="#2E6FBF"/>
+  <rect x="90" y="128" width="20" height="24" fill="#E9B98C"/>
+  <ellipse cx="100" cy="104" rx="42" ry="46" fill="#E9B98C"/>
+  <!-- spiky hair -->
+  <path d="M52 96c-6-34 16-58 48-58s54 24 48 58c-4-10-10-16-16-18 2 8-2 14-8 16 0-8-4-14-10-16 0 9-6 15-13 16 1-9-3-16-10-19-1 9-7 16-15 17 0-9-5-15-12-16-1 8 2 15 7 20-8-4-14-11-19-20z" fill="#171310"/>
+  <path d="M48 92l14-30 6 22-14 18z" fill="#171310"/>
+  <path d="M152 92l-14-30-6 22 14 18z" fill="#171310"/>
+  <g>
+    <ellipse cx="82" cy="108" rx="10.5" ry="13" fill="#fff"/>
+    <ellipse cx="83" cy="111" rx="6.5" ry="9" fill="#2B4C34"/>
+    <circle cx="80" cy="105" r="2.4" fill="#fff"/>
+    <path d="M70 97c4-3 12-4 18-1" stroke="#171310" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <g>
+    <ellipse cx="118" cy="108" rx="10.5" ry="13" fill="#fff"/>
+    <ellipse cx="119" cy="111" rx="6.5" ry="9" fill="#2B4C34"/>
+    <circle cx="116" cy="105" r="2.4" fill="#fff"/>
+    <path d="M112 94c6-2 14 0 18 3" stroke="#171310" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <path d="M92 129c4 5 12 5 16 0" stroke="#9C5A34" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M98 118l4 0" stroke="#C98A5C" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

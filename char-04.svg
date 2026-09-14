@@ -1,0 +1,23 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#EAFBF2"/>
+  <path d="M40 200c0-38 26-58 60-58s60 20 60 58z" fill="#20242B"/>
+  <path d="M63 167c9 6 21 9 37 9s28-3 37-9l-3 13c-9 6-21 9-34 9s-25-3-34-9z" fill="#1F7A5C"/>
+  <rect x="90" y="128" width="20" height="24" fill="#F1C6A0"/>
+  <ellipse cx="100" cy="104" rx="42" ry="46" fill="#F1C6A0"/>
+  <!-- short tidy hair with side part -->
+  <path d="M56 92c-2-34 20-56 44-56s46 22 44 56c-10-16-26-24-44-24s-34 8-44 24z" fill="#3A2A1C"/>
+  <path d="M56 92c4-6 10-10 16-12-2 6-2 12 0 18z" fill="#3A2A1C"/>
+  <g>
+    <ellipse cx="82" cy="108" rx="10" ry="12.5" fill="#fff"/>
+    <ellipse cx="83" cy="111" rx="6" ry="8.5" fill="#4A3A2A"/>
+    <circle cx="80" cy="105" r="2.3" fill="#fff"/>
+    <path d="M71 98c4-3 11-4 17-1" stroke="#171310" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g>
+    <ellipse cx="118" cy="108" rx="10" ry="12.5" fill="#fff"/>
+    <ellipse cx="119" cy="111" rx="6" ry="8.5" fill="#4A3A2A"/>
+    <circle cx="116" cy="105" r="2.3" fill="#fff"/>
+    <path d="M112 95c6-2 13 0 17 3" stroke="#171310" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+  </g>
+  <path d="M93 130c3 4 11 4 14 0" stroke="#B3714A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+</svg>
