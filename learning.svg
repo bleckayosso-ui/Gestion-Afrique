@@ -1,0 +1,27 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#F3F4F1"/>
+  <!-- floor line -->
+  <ellipse cx="200" cy="248" rx="120" ry="10" fill="#E4E3DF"/>
+  <!-- person sitting cross-legged -->
+  <path d="M150 248c0-10 4-16 10-16h80c6 0 10 6 10 16z" fill="#1C1C1A"/>
+  <path d="M150 244c10-14 30-22 50-22s40 8 50 22" fill="#1C1C1A"/>
+  <path d="M182 214c5 4 11 6 18 6s13-2 18-6l-2 9c-5 4-11 5-16 5s-11-1-16-5z" fill="#C41E24"/>
+  <circle cx="200" cy="184" r="22" fill="#C68B5D"/>
+  <path d="M178 176c0-13 10-23 22-23s22 10 22 23c0-3-2-5-4-5-3-8-10-10-18-10s-15 2-18 10c-2 0-4 2-4 5z" fill="#171310"/>
+  <!-- laptop on lap -->
+  <rect x="176" y="222" width="48" height="30" rx="3" fill="#fff" stroke="#1C1C1A" stroke-width="2.5"/>
+  <line x1="184" y1="230" x2="216" y2="230" stroke="#C41E24" stroke-width="2"/>
+  <line x1="184" y1="238" x2="208" y2="238" stroke="#E4E3DF" stroke-width="2"/>
+
+  <!-- graduation cap floating -->
+  <g transform="translate(255,120)">
+    <polygon points="0,10 34,0 68,10 34,20" fill="#1C1C1A"/>
+    <rect x="26" y="10" width="16" height="12" fill="#1C1C1A"/>
+    <line x1="60" y1="10" x2="60" y2="30" stroke="#1C1C1A" stroke-width="2"/>
+    <circle cx="60" cy="33" r="3" fill="#C41E24"/>
+  </g>
+
+  <!-- floating check badge (progress) -->
+  <circle cx="120" cy="140" r="16" fill="#1F7A5C"/>
+  <path d="M113 140l5 5 10-10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

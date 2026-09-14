@@ -1,0 +1,25 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#F3F4F1"/>
+  <!-- desk -->
+  <rect x="40" y="210" width="320" height="14" rx="3" fill="#1C1C1A"/>
+  <rect x="60" y="224" width="12" height="50" fill="#1C1C1A"/>
+  <rect x="328" y="224" width="12" height="50" fill="#1C1C1A"/>
+  <!-- laptop -->
+  <rect x="150" y="168" width="90" height="58" rx="4" fill="#fff" stroke="#1C1C1A" stroke-width="3"/>
+  <rect x="158" y="176" width="74" height="34" fill="#C41E24" opacity="0.15"/>
+  <path d="M155 148l90 0 8 20-106 0z" fill="#1C1C1A"/>
+  <!-- rising chart on screen -->
+  <polyline points="164,204 178,190 192,198 210,178 224,184" fill="none" stroke="#C41E24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- paper stack -->
+  <rect x="270" y="188" width="46" height="34" rx="2" fill="#fff" stroke="#E4E3DF" stroke-width="2"/>
+  <rect x="266" y="182" width="46" height="34" rx="2" fill="#fff" stroke="#E4E3DF" stroke-width="2"/>
+  <line x1="274" y1="192" x2="304" y2="192" stroke="#C41E24" stroke-width="2"/>
+  <line x1="274" y1="200" x2="298" y2="200" stroke="#E4E3DF" stroke-width="2"/>
+  <!-- person -->
+  <g>
+    <path d="M120 226c0-26 16-42 38-42s38 16 38 42z" fill="#1C1C1A"/>
+    <path d="M141 200c5 5 11 7 17 7s12-2 17-7l-2 9c-5 4-10 5-15 5s-10-1-15-5z" fill="#C41E24"/>
+    <circle cx="158" cy="168" r="22" fill="#C68B5D"/>
+    <path d="M136 160c0-13 10-23 22-23s22 10 22 23c0-3-2-5-4-5-3-8-10-10-18-10s-15 2-18 10c-2 0-4 2-4 5z" fill="#2B2118"/>
+  </g>
+</svg>
