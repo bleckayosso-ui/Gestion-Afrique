@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Cours — GestiON Academy</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 32px;}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;}
+  .brand img{height:30px;width:30px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  header{border-bottom:1px solid var(--line);padding:18px 0;}
+  .nav{display:flex;justify-content:space-between;align-items:center;}
+  .btn{background:var(--red);color:#fff;padding:12px 22px;border-radius:6px;font-weight:600;font-size:14px;border:none;cursor:pointer;display:inline-block;text-align:center;}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);padding:12px 22px;border-radius:6px;font-weight:600;font-size:14px;display:inline-block;text-align:center;}
+
+  .breadcrumb{font-size:13px;color:var(--ink-soft);padding:20px 0 0;}
+  .breadcrumb a{color:var(--red);font-weight:600;}
+
+  .badges-row{display:flex;gap:8px;margin-bottom:14px;}
+  .badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.03em;}
+  .badge.free{background:var(--emerald);color:#fff;}
+  .badge.cert{background:#fff;color:var(--ink);border:1px solid var(--line);}
+  .badge.level{background:var(--neutral);color:var(--ink-soft);}
+
+  .hero{padding:28px 0 10px;}
+  .hero h1{font-size:30px;max-width:680px;}
+  .hero .cat{font-size:13px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;}
+
+  .grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;padding:28px 0 90px;align-items:start;}
+
+  /* video mockup */
+  .video-card{border-radius:14px;overflow:hidden;position:relative;background:#111;margin-bottom:8px;height:320px;display:flex;align-items:center;justify-content:center;}
+  .video-card img{height:100%;width:100%;object-fit:cover;object-position:center 20%;display:block;opacity:0.55;filter:grayscale(20%);}
+  .video-card iframe{width:100%;height:100%;border:0;display:block;}
+  .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;}
+  .play-btn svg{width:22px;height:22px;fill:var(--ink);margin-left:3px;}
+  .video-duration{position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:3px 8px;border-radius:4px;}
+  .video-caption{font-size:12px;color:var(--ink-soft);margin-bottom:28px;}
+
+  .block{margin-bottom:36px;}
+  .block h2{font-size:20px;margin-bottom:14px;}
+  .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .learn-item{display:flex;gap:10px;font-size:14px;padding:8px 0;}
+  .learn-item svg{width:18px;height:18px;stroke:var(--emerald);flex:none;margin-top:2px;}
+
+  .curriculum{border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .cur-module{border-bottom:1px solid var(--line);}
+  .cur-module:last-child{border-bottom:none;}
+  .cur-head{display:flex;justify-content:space-between;padding:14px 18px;background:var(--neutral);font-weight:600;font-size:14px;}
+  .cur-lessons{padding:6px 18px;}
+  .cur-lesson{display:flex;align-items:center;gap:10px;padding:9px 0;font-size:13px;color:var(--ink-soft);border-bottom:1px solid var(--line);}
+  .cur-lesson:last-child{border-bottom:none;}
+  .cur-lesson svg{width:14px;height:14px;stroke:var(--ink-soft);flex:none;}
+
+  .instructor-card{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:18px;}
+  .instructor-card img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;}
+  .instructor-card .name{font-weight:700;font-size:15px;}
+  .instructor-card .role{font-size:13px;color:var(--ink-soft);}
+
+  .sidebar{background:var(--neutral);border-radius:12px;padding:26px;position:sticky;top:24px;}
+  .sidebar .price{font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;margin-bottom:4px;}
+  .sidebar .price.free{color:var(--emerald);}
+  .sidebar .price-note{font-size:13px;color:var(--ink-soft);margin-bottom:20px;}
+  .sidebar .btn, .sidebar .btn-outline{width:100%;margin-bottom:10px;}
+  .sidebar hr{border:none;border-top:1px solid var(--line);margin:20px 0;}
+  .sidebar .fact{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;color:var(--ink-soft);}
+  .sidebar .fact strong{color:var(--ink);}
+
+  @media (max-width:900px){.grid2{grid-template-columns:1fr;} .learn-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Academy</span></a>
+    <a class="btn" href="login.html">Se connecter</a>
+  </div>
+</header>
+
+<div class="container breadcrumb"><a href="academy.html">GestiON Academy</a> / <span id="crumb-name"></span></div>
+
+<div class="container hero">
+  <div class="cat" id="hero-cat"></div>
+  <h1 id="hero-title"></h1>
+  <p class="subtitle" style="margin-top:12px;max-width:680px;" id="hero-desc"></p>
+  <div class="badges-row" id="badges-row" style="margin-top:16px;"></div>
+</div>
+
+<div class="container grid2">
+  <div>
+    <div class="video-card" id="video-card">
+      <img id="cover-img" src="" alt="">
+      <div class="play-btn" id="play-btn"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></div>
+      <div class="video-duration" id="video-duration"></div>
+    </div>
+    <div class="video-caption" id="video-caption">Aperçu de la formation. Les leçons vidéo complètes sont disponibles une fois inscrit, dans votre espace GestiON Academy.</div>
+
+    <div class="block">
+      <h2>Ce que vous allez apprendre</h2>
+      <div class="learn-grid" id="learn-grid"></div>
+    </div>
+
+    <div class="block">
+      <h2>Programme du cours</h2>
+      <div class="curriculum" id="curriculum"></div>
+    </div>
+
+    <div class="block">
+      <h2>Votre formateur</h2>
+      <div class="instructor-card">
+        <img id="instructor-img" src="" alt="">
+        <div>
+          <div class="name" id="instructor-name"></div>
+          <div class="role" id="instructor-role"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="price" id="sidebar-price"></div>
+    <div class="price-note" id="sidebar-price-note"></div>
+    <a class="btn" id="cta-main" href="login.html">S'inscrire</a>
+    <a class="btn-outline" href="academy.html">Voir tout le catalogue</a>
+    <hr>
+    <div class="fact"><span>Durée totale</span><strong id="fact-duration"></strong></div>
+    <div class="fact"><span>Modules</span><strong id="fact-modules"></strong></div>
+    <div class="fact"><span>Niveau</span><strong id="fact-level"></strong></div>
+    <div class="fact"><span>Certificat</span><strong id="fact-cert"></strong></div>
+  </div>
+</div>
+
+<script>
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>';
+const PLAY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>';
+
+const LEARN_POINTS = {
+  "compta-fondamentaux": ["Lire un bilan et un compte de résultat", "Comprendre le vocabulaire comptable de base", "Suivre ses dépenses et recettes sans erreur", "Préparer les documents pour votre comptable"],
+  "creer-entreprise-benin": ["Choisir la forme juridique adaptée à votre projet", "Comprendre les démarches RCCM et fiscales", "Estimer le budget de création réel", "Éviter les 5 erreurs les plus fréquentes la 1ère année"],
+  "tva-benin": ["Savoir qui est assujetti à la TVA", "Calculer et déclarer la TVA collectée", "Éviter les erreurs de déclaration courantes", "Anticiper un contrôle fiscal serein"],
+  "bases-controle-gestion": ["Distinguer budget, prévisionnel et réalisé", "Construire un premier tableau de suivi", "Identifier les 5 indicateurs essentiels", "Réagir face à un écart budgétaire"],
+  "intro-ia-pme": ["Identifier les tâches automatisables dans votre PME", "Utiliser un assistant IA pour rédiger et résumer", "Comprendre les limites et les risques", "Choisir un premier outil sans se tromper"],
+  "marketing-pme": ["Définir une cible claire pour son offre", "Construire un plan marketing sur 90 jours", "Choisir les bons canaux selon son budget", "Mesurer ce qui fonctionne vraiment"],
+  "recrutement": ["Rédiger une fiche de poste efficace", "Structurer un entretien pour limiter les biais", "Réussir les 30 premiers jours d'un recrutement", "Éviter les erreurs coûteuses de recrutement"],
+  "controle-gestion-pme": ["Choisir ses indicateurs clés", "Construire un tableau de bord mensuel", "Anticiper les tensions de trésorerie", "Prendre des décisions basées sur les chiffres"],
+  "paie-administration": ["Comprendre les composantes d'un bulletin de paie", "Suivre congés et absences sans erreur", "Sécuriser les obligations déclaratives RH", "Mettre en place des procédures RH simples"],
+  "excel-reporting": ["Construire des tableaux croisés dynamiques", "Automatiser un reporting mensuel", "Créer des graphiques de suivi budgétaire", "Fiabiliser ses formules et éviter les erreurs"],
+  "piloter-projet": ["Définir un périmètre de projet réaliste", "Construire un planning et suivre les jalons", "Gérer les risques et les imprévus", "Clôturer un projet et en tirer les leçons"],
+  "contrats-commerciaux": ["Identifier les clauses essentielles d'un contrat", "Éviter les pièges des CGV mal rédigées", "Négocier les conditions de paiement", "Savoir quand consulter un juriste"],
+  "powerbi-dashboard": ["Connecter ses données à Power BI", "Construire son premier tableau de bord", "Créer des visuels percutants", "Partager un rapport avec son équipe"],
+  "finance-entreprise": ["Lire un bilan et un compte de résultat en confiance", "Comprendre les ratios financiers essentiels", "Évaluer la santé financière d'une entreprise", "Dialoguer efficacement avec son comptable"],
+  "leadership-management": ["Adapter son style de management à son équipe", "Donner un feedback constructif", "Gérer un conflit dans l'équipe", "Déléguer efficacement sans perdre le contrôle"],
+  "audit-rh": ["Structurer une mission d'audit RH", "Identifier les risques sociaux prioritaires", "Rédiger un rapport d'audit actionnable", "Présenter ses conclusions à la direction"],
+  "audit-financier": ["Maîtriser la méthodologie d'audit financier", "Identifier les zones de risque prioritaires", "Documenter ses tests et ses conclusions", "Rédiger un rapport d'audit professionnel"],
+  "transformation-digitale": ["Cartographier les processus à automatiser", "Choisir les bons outils pour sa taille d'entreprise", "Conduire le changement auprès des équipes", "Mesurer le retour sur investissement"],
+  "conformite-juridique": ["Identifier les risques juridiques prioritaires", "Mettre en place un dispositif de conformité", "Former ses équipes aux bonnes pratiques", "Réagir face à un contentieux naissant"],
+  "entrepreneuriat-complet": ["Valider une idée avant d'investir", "Construire un business plan complet", "Structurer son offre et son pricing", "Préparer sa recherche de financement"],
+};
+
+const MODULE_NAMES = {
+  "compta-fondamentaux": ["Pourquoi la comptabilité n'est pas si compliquée", "Le bilan expliqué simplement", "Le compte de résultat expliqué simplement", "Lire les documents de votre comptable"],
+  "creer-entreprise-benin": ["Choisir la bonne forme juridique", "Le dossier RCCM étape par étape", "Comprendre son régime fiscal", "Estimer son budget de démarrage", "Le calendrier réaliste de création", "Les erreurs à éviter la 1ère année"],
+  "tva-benin": ["Qui doit facturer la TVA ?", "Calculer la TVA collectée et déductible", "Remplir sa déclaration", "Se préparer à un contrôle"],
+  "bases-controle-gestion": ["Budget, prévisionnel, réalisé : les différences", "Construire son premier tableau de suivi", "Les 5 indicateurs essentiels d'une PME", "Réagir face à un écart"],
+  "intro-ia-pme": ["Ce que l'IA peut (vraiment) faire pour vous", "Rédiger et résumer avec un assistant IA", "Les limites et les risques à connaître"],
+
+  "marketing-pme": ["Définir sa cible en une page", "Construire un plan à 90 jours", "Choisir ses canaux selon son budget", "Créer du contenu qui convertit", "Mesurer ce qui marche"],
+  "recrutement": ["Rédiger une fiche de poste efficace", "Structurer un entretien sans biais", "Les questions qui révèlent vraiment", "Réussir les 30 premiers jours", "Fidéliser après l'intégration"],
+  "controle-gestion-pme": ["Pourquoi piloter sa gestion change tout", "Construire son budget", "Choisir ses indicateurs clés", "Construire son tableau de bord", "Suivre sa trésorerie", "Anticiper les tensions"],
+  "paie-administration": ["Les composantes d'un bulletin de paie", "Congés et absences sans erreur", "Les obligations déclaratives RH", "Mettre en place des procédures simples", "Gérer les cas particuliers (maladie, départ)", "Cas pratique complet"],
+  "excel-reporting": ["Structurer ses données sources", "Tableaux croisés dynamiques", "Automatiser son reporting mensuel", "Graphiques de suivi budgétaire", "Fiabiliser ses formules", "Modèle de reporting complet", "Cas pratique : reporting d'un commerce", "Cas pratique : reporting d'un service"],
+  "piloter-projet": ["Cadrer le périmètre du projet", "Construire un planning tenable", "Suivre les jalons et les risques", "Gérer les imprévus", "Communiquer avec les parties prenantes", "Clôturer et tirer les leçons"],
+  "contrats-commerciaux": ["Les clauses essentielles d'un contrat", "CGV : les pièges classiques", "Négocier les conditions de paiement", "Les clauses de résiliation et de litige", "Quand consulter un juriste"],
+  "powerbi-dashboard": ["Connecter ses sources de données", "Modéliser ses données", "Créer ses premiers visuels", "Construire un tableau de bord complet", "Partager et actualiser son rapport", "Cas pratique guidé"],
+  "finance-entreprise": ["Lire un bilan en confiance", "Lire un compte de résultat", "Les ratios financiers essentiels", "Évaluer la santé financière d'une entreprise", "Dialoguer avec son expert-comptable"],
+  "leadership-management": ["Adapter son style de management", "Donner un feedback qui fait progresser", "Gérer un conflit dans l'équipe", "Déléguer sans perdre le contrôle", "Motiver une équipe au quotidien", "Cas pratiques et mises en situation"],
+  "audit-rh": ["Cadrer une mission d'audit RH", "Identifier les risques sociaux prioritaires", "Conduire les entretiens et collecter les preuves", "Documenter ses constats", "Rédiger un rapport actionnable", "Présenter ses conclusions à la direction", "Cas pratique complet"],
+  "audit-financier": ["La méthodologie d'audit financier", "Identifier les zones de risque", "Concevoir ses tests de contrôle", "Documenter ses travaux", "Rédiger son rapport d'audit", "Cas pratique : audit d'une PME commerciale", "Cas pratique : audit d'une PME de services", "Examen final"],
+  "transformation-digitale": ["Cartographier ses processus actuels", "Identifier ce qui mérite d'être automatisé", "Choisir ses outils selon sa taille", "Mettre en place un CRM", "Conduire le changement en interne", "Mesurer le retour sur investissement", "Cas pratique complet"],
+  "conformite-juridique": ["Identifier ses risques juridiques prioritaires", "Mettre en place un dispositif de conformité", "Former ses équipes aux bonnes pratiques", "Réagir face à un contentieux naissant", "Documenter sa conformité", "Cas pratique et plan d'action", "Examen final", "Ressources et modèles"],
+  "entrepreneuriat-complet": ["Valider son idée avant d'investir", "Étudier son marché", "Structurer son offre et son pricing", "Construire son prévisionnel financier", "Rédiger son business plan", "Choisir sa forme juridique", "Préparer sa recherche de financement", "Présenter son projet à des investisseurs", "Lancer son activité", "Les 90 premiers jours"],
+  default: ["Introduction et enjeux", "Les fondamentaux", "Mise en pratique", "Cas réels et erreurs à éviter", "Synthèse et quiz final"]
+};
+
+function formatThousands(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+function fmtPrice(p){ return p === 0 ? 'Gratuit' : formatThousands(p) + ' FCFA'; }
+
+function getParam(){
+  const match = window.location.search.match(/[?&]c=([^&]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function render(){
+  // 'courses' array is loaded from academy-data.js
+  const slug = getParam();
+  const c = courses.find(x => x.slug === slug) || courses[0];
+
+  document.getElementById('page-title').textContent = c.title + ' — GestiON Academy';
+  document.getElementById('crumb-name').textContent = c.title;
+  document.getElementById('hero-cat').textContent = c.cat;
+  document.getElementById('hero-title').textContent = c.title;
+  document.getElementById('hero-desc').textContent = "Une formation pratique, conçue pour être appliquée dès le lendemain dans votre entreprise.";
+
+  document.getElementById('badges-row').innerHTML = `
+    <span class="badge level">${c.level}</span>
+    ${c.price === 0 ? '<span class="badge free">Gratuit</span>' : ''}
+    ${c.cert ? '<span class="badge cert">Certificat inclus</span>' : ''}
+  `;
+
+  document.getElementById('cover-img').src = 'assets/manga/' + c.char + '.svg';
+  document.getElementById('video-duration').textContent = c.duration;
+
+  if (c.videoUrl) {
+    // Une vraie vidéo a été fournie (YouTube/Vimeo) : on l'intègre à la place de l'aperçu illustré.
+    document.getElementById('video-card').innerHTML = `<iframe src="${c.videoUrl}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    document.getElementById('video-caption').textContent = "Vidéo de présentation du cours.";
+  }
+
+  const points = LEARN_POINTS[c.slug] || [];
+  document.getElementById('learn-grid').innerHTML = points.map(p => `<div class="learn-item">${CHECK}${p}</div>`).join('');
+
+  const modNames = MODULE_NAMES[c.slug] || MODULE_NAMES.default;
+  let curHtml = '';
+  for (let i = 0; i < c.modules; i++){
+    const name = modNames[i % modNames.length] + (i >= modNames.length ? ' (suite)' : '');
+    curHtml += `<div class="cur-module">
+      <div class="cur-head"><span>Module ${i+1} — ${name}</span><span>${Math.round(60 * (i+1) / c.modules * 10)/10} min</span></div>
+      <div class="cur-lessons">
+        <div class="cur-lesson">${PLAY_ICON}Leçon vidéo</div>
+        <div class="cur-lesson">${PLAY_ICON}Exercice pratique</div>
+      </div>
+    </div>`;
+  }
+  document.getElementById('curriculum').innerHTML = curHtml;
+
+  document.getElementById('instructor-img').src = 'assets/manga/' + c.char + '.svg';
+  document.getElementById('instructor-name').textContent = c.instructor;
+  document.getElementById('instructor-role').textContent = 'Consultant(e) GestiON Afrique — ' + c.cat;
+
+  const priceEl = document.getElementById('sidebar-price');
+  priceEl.textContent = fmtPrice(c.price);
+  priceEl.classList.toggle('free', c.price === 0);
+  document.getElementById('sidebar-price-note').textContent = c.price === 0 ? "Accès gratuit et permanent." : "Accès à vie une fois acheté.";
+  document.getElementById('fact-duration').textContent = c.duration;
+  document.getElementById('fact-modules').textContent = c.modules;
+  document.getElementById('fact-level').textContent = c.level;
+  document.getElementById('fact-cert').textContent = c.cert ? 'Oui' : 'Non';
+
+  document.getElementById('cta-main').href = c.course ? 'course.html' : 'login.html';
+  document.getElementById('cta-main').textContent = c.price === 0 ? "Commencer gratuitement" : "S'inscrire — " + fmtPrice(c.price);
+}
+</script>
+<script src="assets/academy-data.js"></script>
+<script>render();</script>
+
+</body>
+</html>

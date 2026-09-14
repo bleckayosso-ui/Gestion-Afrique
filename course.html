@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contrôle de gestion pour dirigeants de PME — GestiON Academy</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',sans-serif;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+
+  .top{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid var(--line);}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;}
+  .brand img{height:26px;width:26px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  .progress-pill{font-size:13px;color:var(--ink-soft);}
+
+  .shell{display:grid;grid-template-columns:260px 1fr 320px;min-height:calc(100vh - 58px);}
+  aside{border-right:1px solid var(--line);padding:20px;}
+  aside h4{font-size:12px;text-transform:uppercase;color:var(--ink-soft);letter-spacing:.03em;margin-bottom:14px;}
+  .mod{margin-bottom:18px;}
+  .mod-title{font-size:13px;font-weight:700;margin-bottom:8px;}
+  .lesson{display:flex;align-items:center;gap:8px;padding:7px 0;font-size:13px;color:var(--ink-soft);}
+  .lesson.active{color:var(--red);font-weight:600;}
+  .lesson .dot{width:7px;height:7px;border-radius:50%;background:var(--line);flex:none;}
+  .lesson.done .dot{background:var(--emerald);}
+  .lesson.active .dot{background:var(--red);}
+
+  main{padding:32px 40px;max-width:640px;}
+  .breadcrumb{font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
+  main h1{font-size:26px;margin-bottom:18px;}
+  main p{font-size:15px;line-height:1.7;color:#333;}
+  .callout{background:var(--neutral);border-left:3px solid var(--red);padding:14px 16px;border-radius:4px;font-size:14px;margin:20px 0;}
+  .nav-btns{display:flex;justify-content:space-between;margin-top:36px;}
+  .btn{padding:12px 20px;border:none;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;}
+  .btn-primary{background:var(--red);color:#fff;}
+  .btn-ghost{background:none;color:var(--ink-soft);border:1px solid var(--line);}
+
+  .tutor{border-left:1px solid var(--line);display:flex;flex-direction:column;background:var(--neutral);}
+  .tutor-head{padding:18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:#fff;}
+  .tutor-head .badge{width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;}
+  .tutor-head .name{font-weight:700;font-size:14px;}
+  .tutor-head .sub{font-size:12px;color:var(--ink-soft);}
+  .tutor-body{flex:1;padding:18px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;}
+  .msg{max-width:90%;font-size:13px;padding:10px 12px;border-radius:10px;line-height:1.5;}
+  .msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;}
+  .msg.user{background:var(--ink);color:#fff;align-self:flex-end;}
+  .quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 14px;}
+  .quick button{font-size:12px;padding:6px 10px;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:pointer;}
+  .tutor-input{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);background:#fff;}
+  .tutor-input input{flex:1;border:1px solid var(--line);border-radius:6px;padding:9px 10px;font-size:13px;}
+  .tutor-input button{background:var(--red);color:#fff;border:none;border-radius:6px;padding:0 14px;font-weight:600;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a class="brand" href="academy.html"><img src="assets/gestion-icon.png" alt="">GestiON Academy</a>
+  <div class="progress-pill">Module 3 sur 6 · 42 % complété</div>
+</div>
+
+<div class="shell">
+  <aside>
+    <h4>Contenu du cours</h4>
+    <div class="mod">
+      <div class="mod-title">1. Pourquoi piloter sa gestion</div>
+      <div class="lesson done"><span class="dot"></span>Les enjeux pour une PME</div>
+      <div class="lesson done"><span class="dot"></span>Quiz de module</div>
+    </div>
+    <div class="mod">
+      <div class="mod-title">2. Construire son budget</div>
+      <div class="lesson done"><span class="dot"></span>Les grandes lignes budgétaires</div>
+      <div class="lesson done"><span class="dot"></span>Exercice pratique</div>
+    </div>
+    <div class="mod">
+      <div class="mod-title">3. Tableaux de bord</div>
+      <div class="lesson active"><span class="dot"></span>Choisir ses indicateurs clés</div>
+      <div class="lesson"><span class="dot"></span>Construire son premier tableau</div>
+      <div class="lesson"><span class="dot"></span>Quiz de module</div>
+    </div>
+    <div class="mod">
+      <div class="mod-title">4. Suivi de trésorerie</div>
+      <div class="lesson"><span class="dot"></span>Anticiper les tensions</div>
+      <div class="lesson"><span class="dot"></span>Exercice pratique</div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="breadcrumb">Module 3 · Tableaux de bord</div>
+    <h1>Choisir ses indicateurs clés</h1>
+    <p>Un tableau de bord utile ne contient pas cinquante chiffres : il en contient cinq ou six, ceux qui déclenchent une décision. Avant de construire le vôtre, posez-vous une question simple pour chaque indicateur envisagé : <em>si ce chiffre bouge fortement, qu'est-ce que je change dans la semaine qui suit ?</em> Si la réponse est "rien", l'indicateur n'a pas sa place dans un tableau de pilotage mensuel.</p>
+    <p>Pour une PME de services comme celles que nous accompagnons chez GestiON Afrique, quatre familles d'indicateurs couvrent la majorité des besoins : la trésorerie disponible, le chiffre d'affaires facturé vs encaissé, le taux d'occupation des équipes, et le délai moyen de paiement des clients.</p>
+    <div class="callout">💡 Le tuteur IA à droite connaît le contenu de cette leçon — demandez-lui un exemple appliqué à votre secteur si celui du cours ne vous parle pas.</div>
+    <p>Dans la leçon suivante, nous construirons ensemble un premier tableau de bord à partir d'un cas réel de commerce de détail.</p>
+    <div class="nav-btns">
+      <button class="btn btn-ghost">← Leçon précédente</button>
+      <button class="btn btn-primary">Leçon suivante →</button>
+    </div>
+  </main>
+
+  <div class="tutor">
+    <div class="tutor-head">
+      <div class="badge">IA</div>
+      <div>
+        <div class="name">Tuteur GestiAI</div>
+        <div class="sub">Sur cette leçon</div>
+      </div>
+    </div>
+    <div class="tutor-body">
+      <div class="msg bot">Bonjour ! Je peux vous expliquer autrement, donner un exemple, ou vous faire un exercice sur les indicateurs clés. Que préférez-vous ?</div>
+      <div class="msg user">Un exemple pour une boutique de vêtements ?</div>
+      <div class="msg bot">Bien sûr. Pour une boutique : trésorerie disponible, chiffre d'affaires du jour vs objectif, taux de rotation des stocks, et panier moyen. Voulez-vous que je vous fasse un exercice pour calculer le taux de rotation ?</div>
+    </div>
+    <div class="quick">
+      <button>Donne-moi un exemple</button>
+      <button>Fais-moi un exercice</button>
+      <button>Interroge-moi</button>
+    </div>
+    <div class="tutor-input">
+      <input placeholder="Posez votre question...">
+      <button>Envoyer</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

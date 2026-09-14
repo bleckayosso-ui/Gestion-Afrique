@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GestiON Academy — Catalogue</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 32px;}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;}
+  .brand img{height:30px;width:30px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  header{border-bottom:1px solid var(--line);padding:18px 0;}
+  .nav{display:flex;justify-content:space-between;align-items:center;}
+  .btn{background:var(--red);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;border:none;cursor:pointer;}
+
+  .hero{padding:52px 0 8px;}
+  .hero h1{font-size:34px;max-width:640px;}
+  .hero p{max-width:600px;font-size:16px;margin-top:12px;}
+  .stats-line{display:flex;gap:28px;margin:22px 0 8px;font-size:13px;color:var(--ink-soft);}
+  .stats-line strong{color:var(--ink);font-family:'Poppins',sans-serif;}
+
+  .filters{display:flex;gap:8px;margin:28px 0 8px;flex-wrap:wrap;}
+  .filter{padding:7px 14px;border-radius:20px;border:1px solid var(--line);font-size:13px;font-weight:600;cursor:pointer;background:#fff;}
+  .filter.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  .toggle-row{display:flex;gap:8px;margin:14px 0 22px;}
+  .toggle{padding:7px 14px;border-radius:20px;border:1px solid var(--line);font-size:13px;font-weight:600;cursor:pointer;background:#fff;}
+  .toggle.active{background:var(--red);color:#fff;border-color:var(--red);}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:90px;}
+  .course{border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;}
+  .course .cover{height:140px;background:var(--neutral);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .course .cover img{height:100%;width:auto;object-fit:contain;}
+  .course .badges{position:absolute;top:10px;left:10px;display:flex;gap:6px;}
+  .badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.03em;}
+  .badge.free{background:var(--emerald);color:#fff;}
+  .badge.cert{background:#fff;color:var(--ink);border:1px solid var(--line);}
+  .course .body{padding:16px;flex:1;display:flex;flex-direction:column;}
+  .course .level{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--red);letter-spacing:.03em;margin-bottom:5px;}
+  .course h3{font-size:15px;margin-bottom:6px;line-height:1.3;}
+  .course .cat{font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
+  .course .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;font-size:12px;color:var(--ink-soft);}
+  .course .price{font-weight:700;color:var(--ink);font-size:13px;}
+  .course .price.free{color:var(--emerald);}
+
+  .note{background:var(--neutral);border-left:3px solid var(--red);padding:14px 18px;border-radius:6px;font-size:13px;color:var(--ink-soft);margin:24px 0;}
+
+  @media (max-width:860px){.grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Academy</span></a>
+    <a class="btn" href="login.html">Se connecter</a>
+  </div>
+</header>
+
+<div class="hero container" style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;">
+  <div>
+    <h1>20 formations pour démarrer</h1>
+    <p class="subtitle">5 cours gratuits pour découvrir, le reste à la carte entre 25 000 et 150 000 FCFA. Deux cours gratuits donnent accès à un certificat vérifiable.</p>
+    <div class="stats-line">
+      <span><strong id="stat-total">20</strong> formations</span>
+      <span><strong id="stat-free">5</strong> gratuites</span>
+      <span><strong id="stat-cert">2</strong> avec certificat gratuit</span>
+    </div>
+  </div>
+  <img src="assets/illustrations/learning.svg" alt="" style="width:100%;border-radius:12px;">
+</div>
+
+<div class="container">
+  <div class="filters" id="filters"></div>
+  <div class="toggle-row">
+    <div class="toggle active" data-price="all" onclick="setPrice('all')">Tous les tarifs</div>
+    <div class="toggle" data-price="free" onclick="setPrice('free')">Gratuits</div>
+    <div class="toggle" data-price="paid" onclick="setPrice('paid')">Payants</div>
+  </div>
+
+  <div class="note">Les 5 cours gratuits restent gratuits en permanence — ce ne sont pas des essais limités dans le temps. Deux d'entre eux délivrent un certificat vérifiable à la réussite de l'examen final ; les trois autres sont des introductions sans certificat.</div>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<script src="assets/academy-data.js"></script>
+<script>
+
+let activeCat = 'Tous';
+let activePrice = 'all';
+
+function formatThousands(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+function fmtPrice(p){ return p === 0 ? 'Gratuit' : formatThousands(p) + ' FCFA'; }
+
+function renderFilters(){
+  const cats = ['Tous', ...new Set(courses.map(c => c.cat))];
+  document.getElementById('filters').innerHTML = cats.map(c =>
+    `<div class="filter ${c===activeCat?'active':''}" onclick="setCat('${c}')">${c}</div>`
+  ).join('');
+}
+function setCat(c){ activeCat = c; renderFilters(); renderGrid(); }
+function setPrice(p){
+  activePrice = p;
+  document.querySelectorAll('.toggle').forEach(t => t.classList.toggle('active', t.dataset.price === p));
+  renderGrid();
+}
+
+function renderGrid(){
+  let list = courses;
+  if (activeCat !== 'Tous') list = list.filter(c => c.cat === activeCat);
+  if (activePrice === 'free') list = list.filter(c => c.price === 0);
+  if (activePrice === 'paid') list = list.filter(c => c.price > 0);
+
+  document.getElementById('grid').innerHTML = list.map(c => `
+    <a class="course" href="course-detail.html?c=${c.slug}">
+      <div class="cover">
+        <img src="assets/manga/${c.char}.svg" alt="">
+        <div class="badges">
+          ${c.price === 0 ? '<span class="badge free">Gratuit</span>' : ''}
+          ${c.cert ? '<span class="badge cert">Certificat</span>' : ''}
+        </div>
+      </div>
+      <div class="body">
+        <div class="level">${c.level}</div>
+        <h3>${c.title}</h3>
+        <div class="cat">${c.cat} · ${c.modules} modules</div>
+        <div class="meta"><span>${c.duration}</span><span class="price ${c.price===0?'free':''}">${fmtPrice(c.price)}</span></div>
+      </div>
+    </a>
+  `).join('');
+}
+
+renderFilters();
+renderGrid();
+</script>
+
+</body>
+</html>

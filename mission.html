@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission — Audit financier — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+
+  .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+  aside{background:#fff;border-right:1px solid var(--line);padding:24px 18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:32px;}
+  .brand img{height:28px;width:28px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  nav a{display:block;padding:10px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:4px;}
+  nav a.active{background:var(--neutral);color:var(--ink);font-weight:600;}
+
+  main{padding:36px 40px;}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+  .meta-line{font-size:13px;color:var(--ink-soft);margin-bottom:28px;}
+
+  .tracker{display:flex;margin-bottom:32px;}
+  .tstep{flex:1;text-align:center;position:relative;}
+  .tstep:not(:last-child)::after{content:'';position:absolute;top:11px;left:55%;width:90%;height:2px;background:var(--line);z-index:0;}
+  .tstep.done:not(:last-child)::after{background:var(--emerald);}
+  .dot{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--line);margin:0 auto 8px;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--ink-soft);}
+  .tstep.done .dot{background:var(--emerald);border-color:var(--emerald);color:#fff;}
+  .tstep.active .dot{background:var(--red);border-color:var(--red);color:#fff;}
+  .tstep .label{font-size:12px;font-weight:600;}
+
+  .grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:20px;}
+  .panel h3{font-size:15px;margin-bottom:16px;}
+  .task{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .task input{margin:0;}
+  .task.done label{text-decoration:line-through;color:var(--ink-soft);}
+  .doc-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;}
+  .doc-row .name{font-weight:500;}
+  .doc-row .req{font-size:11px;padding:2px 8px;border-radius:20px;background:#FDE9C8;color:#8A5A16;font-weight:600;}
+  .doc-row .ok{background:#DCEFE6;color:var(--emerald);}
+  .comment{font-size:13px;padding:10px 0;border-bottom:1px solid var(--line);}
+  .comment .who{font-weight:600;font-size:12px;color:var(--ink-soft);margin-bottom:3px;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+    <nav>
+      <a href="dashboard.html">Tableau de bord</a>
+      <a href="devis.html">Devis</a>
+      <a href="facture.html">Factures</a>
+      <a class="active" href="#">Missions</a>
+      <a href="documents.html">Documents</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="#" onclick="logout();window.location.href='login.html';return false;">Déconnexion</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="top">
+      <div>
+        <h1>Audit financier — exercice 2025</h1>
+      </div>
+    </div>
+    <div class="meta-line" style="display:flex;align-items:center;gap:8px;">
+      <img src="assets/avatars/avatar-01.svg" alt="" style="width:22px;height:22px;border-radius:50%;">
+      Société ABC · Responsable : Amina Kouassi · Échéance : 28 septembre 2026
+    </div>
+
+    <div class="tracker">
+      <div class="tstep done"><div class="dot">✓</div><div class="label">Préparation</div></div>
+      <div class="tstep done"><div class="dot">✓</div><div class="label">Documents reçus</div></div>
+      <div class="tstep active"><div class="dot">3</div><div class="label">Analyse en cours</div></div>
+      <div class="tstep"><div class="dot">4</div><div class="label">Validation</div></div>
+      <div class="tstep"><div class="dot">5</div><div class="label">Terminé</div></div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="panel">
+          <h3>Tâches</h3>
+          <div class="task done"><input type="checkbox" checked><label>Collecter les relevés bancaires 2025</label></div>
+          <div class="task done"><input type="checkbox" checked><label>Rapprochement bancaire T1-T4</label></div>
+          <div class="task"><input type="checkbox"><label>Analyser les écarts de trésorerie</label></div>
+          <div class="task"><input type="checkbox"><label>Rédiger le rapport préliminaire</label></div>
+        </div>
+        <div class="panel">
+          <h3>Commentaires</h3>
+          <div class="comment"><div class="who" style="display:flex;align-items:center;gap:6px;"><img src="assets/avatars/avatar-01.svg" alt="" style="width:18px;height:18px;border-radius:50%;">Amina Kouassi — 10 sept.</div>Documents bancaires reçus, on démarre l'analyse cette semaine.</div>
+          <div class="comment"><div class="who">Société ABC — 8 sept.</div>Voici les relevés manquants pour le T3.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <h3>Documents</h3>
+          <div class="doc-row"><span class="name">Relevés bancaires 2025</span><span class="req ok">Reçu</span></div>
+          <div class="doc-row"><span class="name">Grand livre comptable</span><span class="req ok">Reçu</span></div>
+          <div class="doc-row"><span class="name">Justificatifs d'immobilisations</span><span class="req">Demandé</span></div>
+        </div>
+        <div class="panel">
+          <h3>Livrables</h3>
+          <p style="font-size:13px;color:var(--ink-soft);">Disponibles une fois la mission validée.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/app.js"></script>
+<script>requireAuth();</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1,h2{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+
+  .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+  aside{background:#fff;border-right:1px solid var(--line);padding:24px 18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:32px;}
+  .brand img{height:28px;width:28px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  nav a{display:block;padding:10px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:4px;}
+  nav a.active{background:var(--neutral);color:var(--ink);font-weight:600;}
+
+  main{padding:36px 40px;}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
+  .btn{background:var(--red);color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;}
+
+  .board{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;align-items:start;}
+  .col{background:#F8F8F6;border-radius:10px;padding:14px;min-height:400px;}
+  .col-head{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:12px;color:var(--ink-soft);}
+  .col-head .count{background:var(--line);border-radius:20px;padding:1px 8px;font-weight:600;}
+  .lead-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;font-size:13px;}
+  .lead-card .name{font-weight:600;margin-bottom:4px;}
+  .lead-card .meta{color:var(--ink-soft);font-size:12px;}
+  .col.gagne .lead-card{border-left:3px solid #1F7A5C;}
+  .col.perdu .lead-card{border-left:3px solid #C7C7C2;opacity:.7;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+    <nav>
+      <a href="admin-dashboard.html">Tableau de bord</a>
+      <a class="active" href="#">CRM</a>
+      <a href="#">Missions</a>
+      <a href="#">Facturation</a>
+      <a href="#">Catalogue</a>
+      <a href="#">Consultants</a>
+      <a href="#">Paramètres</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="top">
+      <div>
+        <h1>Pipeline commercial</h1>
+        <p class="subtitle">17 prospects actifs, tous pays confondus.</p>
+      </div>
+      <button class="btn">Ajouter un prospect</button>
+    </div>
+
+    <div class="board">
+      <div class="col">
+        <div class="col-head">Nouveau <span class="count">4</span></div>
+        <div class="lead-card"><div class="name">Kaourou SARL</div><div class="meta">Comptabilité · Bénin</div></div>
+        <div class="lead-card"><div class="name">Atelier Textile Adjara</div><div class="meta">Création d'entreprise · Bénin</div></div>
+      </div>
+      <div class="col">
+        <div class="col-head">Contacté <span class="count">3</span></div>
+        <div class="lead-card"><div class="name">Nova Digital</div><div class="meta">Transformation digitale · France</div></div>
+      </div>
+      <div class="col">
+        <div class="col-head">Qualification <span class="count">2</span></div>
+        <div class="lead-card"><div class="name">Fondation Espoir</div><div class="meta">Audit RH · Bénin</div></div>
+      </div>
+      <div class="col">
+        <div class="col-head">Devis <span class="count">3</span></div>
+        <div class="lead-card"><div class="name">Société ABC</div><div class="meta">Audit financier · devis envoyé</div></div>
+        <div class="lead-card"><div class="name">Trans-Sahel Logistique</div><div class="meta">Contrôle de gestion · Togo</div></div>
+      </div>
+      <div class="col">
+        <div class="col-head">Négociation <span class="count">2</span></div>
+        <div class="lead-card"><div class="name">Cabinet Fleur de Lys</div><div class="meta">Juridique · France</div></div>
+      </div>
+      <div class="col gagne">
+        <div class="col-head">Gagné <span class="count">2</span></div>
+        <div class="lead-card"><div class="name">Boulangerie Kpodji</div><div class="meta">Comptabilité · client actif</div></div>
+      </div>
+      <div class="col perdu">
+        <div class="col-head">Perdu <span class="count">1</span></div>
+        <div class="lead-card"><div class="name">Etablissements Sossou</div><div class="meta">Budget insuffisant</div></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

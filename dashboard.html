@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace client — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1,h2{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+
+  .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+  aside{background:#fff;border-right:1px solid var(--line);padding:24px 18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:32px;}
+  .brand img{height:28px;width:28px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  nav a{display:block;padding:10px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:4px;}
+  nav a.active{background:var(--neutral);color:var(--ink);font-weight:600;}
+
+  main{padding:36px 40px;}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;}
+  .stat .num{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;}
+  .stat .label{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  th,td{text-align:left;padding:14px 18px;font-size:14px;border-bottom:1px solid var(--line);}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);background:var(--neutral);}
+  .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;}
+  .badge.cours{background:#FDE9C8;color:#8A5A16;}
+  .badge.valid{background:#DCEFE6;color:#1F7A5C;}
+  .badge.attente{background:#F0EFEC;color:var(--ink-soft);}
+  .btn{background:var(--red);color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+    <nav>
+      <a class="active" href="dashboard.html">Tableau de bord</a>
+      <a href="devis.html">Devis</a>
+      <a href="facture.html">Factures</a>
+      <a href="mission.html">Missions</a>
+      <a href="documents.html">Documents</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="#" onclick="logout();window.location.href='login.html';return false;">Déconnexion</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="top">
+      <div>
+        <h1 id="greeting">Bonjour</h1>
+        <p class="subtitle">Voici où en sont vos dossiers aujourd'hui.</p>
+      </div>
+      <a class="btn" href="devis.html" style="display:inline-block;">Demander un devis</a>
+    </div>
+
+    <div class="cards">
+      <div class="stat"><div class="num" id="stat-missions">0</div><div class="label">Missions en cours</div></div>
+      <div class="stat"><div class="num" id="stat-quotes">0</div><div class="label">Devis en attente</div></div>
+      <div class="stat"><div class="num" id="stat-tickets">0</div><div class="label">Tickets ouverts</div></div>
+      <div class="stat"><div class="num" id="stat-docs">0</div><div class="label">Documents rangés</div></div>
+    </div>
+
+    <h2 style="font-size:18px;margin-bottom:14px;">Missions en cours</h2>
+    <table>
+      <tr><th>Mission</th><th>Responsable</th><th>Statut</th><th>Échéance</th></tr>
+      <tbody id="missions-body"></tbody>
+    </table>
+
+    <h2 style="font-size:18px;margin:32px 0 14px;">Vos devis récents</h2>
+    <table>
+      <tr><th>Service</th><th>Formule</th><th>Statut</th><th>Date</th></tr>
+      <tbody id="quotes-body"></tbody>
+    </table>
+  </main>
+</div>
+<script src="assets/app.js"></script>
+<script>
+const user = requireAuth();
+if (user) {
+  document.getElementById('greeting').textContent = 'Bonjour, ' + user.companyName;
+
+  const missions = getMissions();
+  document.getElementById('stat-missions').textContent = missions.length;
+  document.getElementById('missions-body').innerHTML = missions.length ? missions.map(m => `
+    <tr><td>${m.name}</td>
+    <td style="display:flex;align-items:center;gap:8px;"><img src="assets/avatars/${m.avatar}.svg" style="width:22px;height:22px;border-radius:50%;">${m.responsible}</td>
+    <td><span class="badge ${m.statusClass}">${m.status}</span></td>
+    <td>${m.due}</td></tr>
+  `).join('') : '<tr><td colspan="4" style="color:var(--ink-soft);">Aucune mission en cours pour le moment.</td></tr>';
+
+  const quotes = getQuotes();
+  document.getElementById('stat-quotes').textContent = quotes.filter(q => q.status === 'Envoyé').length;
+  document.getElementById('quotes-body').innerHTML = quotes.length ? quotes.map(q => `
+    <tr><td>${q.service}</td><td>${q.formula}</td><td><span class="badge attente">${q.status}</span></td><td>${q.date}</td></tr>
+  `).join('') : '<tr><td colspan="4" style="color:var(--ink-soft);">Aucun devis pour le moment — <a href="devis.html" style="color:var(--red);font-weight:600;">en demander un</a>.</td></tr>';
+
+  const tickets = getTickets();
+  document.getElementById('stat-tickets').textContent = tickets.filter(t => t.status !== 'Résolu').length;
+
+  const docs = getDocuments();
+  document.getElementById('stat-docs').textContent = docs.length;
+}
+</script>
+</body>
+</html>

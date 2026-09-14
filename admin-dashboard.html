@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1,h2{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+
+  .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+  aside{background:#fff;border-right:1px solid var(--line);padding:24px 18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:32px;}
+  .brand img{height:28px;width:28px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  nav a{display:block;padding:10px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:4px;}
+  nav a.active{background:var(--neutral);color:var(--ink);font-weight:600;}
+
+  main{padding:36px 40px;}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0 36px;}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;}
+  .stat .num{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;}
+  .stat .label{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+  .stat .delta{font-size:12px;font-weight:600;margin-top:6px;}
+  .stat .delta.up{color:var(--emerald);}
+
+  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;}
+  .panel h3{font-size:15px;margin-bottom:16px;}
+  table{width:100%;border-collapse:collapse;}
+  th,td{text-align:left;padding:10px 0;font-size:13px;border-bottom:1px solid var(--line);}
+  th{color:var(--ink-soft);font-weight:600;font-size:12px;text-transform:uppercase;}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;}
+  .badge.ok{background:#DCEFE6;color:var(--emerald);}
+  .badge.wait{background:#FDE9C8;color:#8A5A16;}
+  .funnel div{display:flex;justify-content:space-between;font-size:13px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .funnel span.n{font-weight:700;font-family:'Poppins',sans-serif;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+    <nav>
+      <a class="active" href="admin-dashboard.html">Tableau de bord</a>
+      <a href="crm.html">CRM</a>
+      <a href="#">Missions</a>
+      <a href="#">Facturation</a>
+      <a href="#">Catalogue</a>
+      <a href="#">Consultants</a>
+      <a href="#">Paramètres</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Tableau de bord — Administration</h1>
+    <p class="subtitle">Semaine du 8 au 13 septembre 2026.</p>
+
+    <div class="cards">
+      <div class="stat"><div class="num">4,2 M FCFA</div><div class="label">Chiffre d'affaires du mois</div><div class="delta up">+12 % vs mois dernier</div></div>
+      <div class="stat"><div class="num">17</div><div class="label">Prospects actifs</div></div>
+      <div class="stat"><div class="num">9</div><div class="label">Missions en cours</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Factures en retard</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3>Devis récents</h3>
+        <table>
+          <tr><th>Client</th><th>Service</th><th>Montant</th><th>Statut</th></tr>
+          <tr><td>Société ABC</td><td>Audit financier</td><td>850 000 FCFA</td><td><span class="badge wait">Envoyé</span></td></tr>
+          <tr><td>Nova Digital</td><td>Transformation digitale</td><td>3 200 €</td><td><span class="badge ok">Accepté</span></td></tr>
+          <tr><td>Fondation Espoir</td><td>Audit RH</td><td>600 000 FCFA</td><td><span class="badge wait">Envoyé</span></td></tr>
+          <tr><td>Boulangerie Kpodji</td><td>Comptabilité</td><td>75 000 FCFA/mois</td><td><span class="badge ok">Accepté</span></td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>Entonnoir commercial</h3>
+        <div class="funnel">
+          <div><span>Nouveau</span><span class="n">4</span></div>
+          <div><span>Contacté</span><span class="n">3</span></div>
+          <div><span>Qualification</span><span class="n">2</span></div>
+          <div><span>Devis</span><span class="n">3</span></div>
+          <div><span>Négociation</span><span class="n">2</span></div>
+          <div><span>Gagné</span><span class="n">2</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

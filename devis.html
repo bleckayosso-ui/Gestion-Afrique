@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demander un devis — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1,h2{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  .wrap{max-width:720px;margin:0 auto;padding:48px 24px 100px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:36px;}
+  .brand img{height:30px;width:30px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+
+  .progress{display:flex;gap:6px;margin-bottom:32px;}
+  .progress span{flex:1;height:4px;border-radius:2px;background:var(--line);}
+  .progress span.done{background:var(--red);}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:36px;}
+  .step{display:none;}
+  .step.active{display:block;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+  .option{border:1.5px solid var(--line);border-radius:8px;padding:16px;cursor:pointer;font-size:14px;font-weight:600;}
+  .option:hover{border-color:var(--red);}
+  .option.selected{border-color:var(--red);background:#FBEAEA;}
+  label{display:block;font-size:13px;font-weight:600;margin:18px 0 6px;}
+  input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font-size:14px;font-family:'Inter',sans-serif;}
+  .nav-btns{display:flex;justify-content:space-between;margin-top:32px;}
+  .btn{padding:12px 22px;border:none;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;}
+  .btn-primary{background:var(--red);color:#fff;}
+  .btn-primary:hover{background:var(--red-dark);}
+  .btn-ghost{background:none;color:var(--ink-soft);}
+
+  .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+  .offer{border:1.5px solid var(--line);border-radius:10px;padding:22px;text-align:center;}
+  .offer.reco{border-color:var(--red);}
+  .offer .tag{font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+  .offer h3{font-size:17px;margin-bottom:6px;}
+  .offer .price{font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;margin:10px 0;}
+  .offer ul{text-align:left;font-size:13px;color:var(--ink-soft);padding-left:18px;margin:14px 0;}
+  .offer button{width:100%;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+  <div class="progress"><span class="done"></span><span class="done"></span><span></span><span></span></div>
+
+  <div class="card">
+
+    <div class="step active" id="step1">
+      <h1>Quel service recherchez-vous ?</h1>
+      <p class="subtitle">Sélectionnez la catégorie la plus proche de votre besoin.</p>
+      <div class="options">
+        <div class="option selected">Comptabilité</div>
+        <div class="option">Fiscalité</div>
+        <div class="option">Audit</div>
+        <div class="option">Ressources humaines</div>
+        <div class="option">Juridique</div>
+        <div class="option">Création d'entreprise</div>
+      </div>
+      <div class="nav-btns"><span></span><button class="btn btn-primary" onclick="go(2)">Continuer</button></div>
+    </div>
+
+    <div class="step" id="step2">
+      <h1>Parlez-nous de votre entreprise</h1>
+      <p class="subtitle">Ces informations adaptent le questionnaire à votre situation.</p>
+      <label>Pays</label>
+      <select><option>Bénin</option><option>France</option><option>Côte d'Ivoire</option></select>
+      <label>Taille de l'entreprise</label>
+      <select><option>Indépendant / TPE (1-9 salariés)</option><option>PME (10-49 salariés)</option><option>Entreprise structurée (50+ salariés)</option></select>
+      <label>Nombre de salariés</label>
+      <input type="number" placeholder="Ex : 6">
+      <div class="nav-btns"><button class="btn btn-ghost" onclick="go(1)">Retour</button><button class="btn btn-primary" onclick="go(3)">Continuer</button></div>
+    </div>
+
+    <div class="step" id="step3">
+      <h1>Précisez votre besoin</h1>
+      <p class="subtitle">Quelques détails pour calibrer l'estimation.</p>
+      <label>Décrivez votre besoin</label>
+      <input type="text" placeholder="Ex : tenue comptable mensuelle + clôture annuelle">
+      <label>Délai souhaité</label>
+      <select><option>Dès que possible</option><option>Dans le mois</option><option>Pas d'urgence</option></select>
+      <label>Budget envisagé (optionnel)</label>
+      <input type="text" placeholder="Ex : 150 000 FCFA / mois">
+      <div class="nav-btns"><button class="btn btn-ghost" onclick="go(2)">Retour</button><button class="btn btn-primary" onclick="go(4)">Voir mon estimation</button></div>
+    </div>
+
+    <div class="step" id="step4">
+      <h1>Voici trois formules adaptées</h1>
+      <p class="subtitle">Estimation indicative — le devis détaillé suit par e-mail après confirmation.</p>
+      <div class="offers">
+        <div class="offer" data-formula="Essentielle">
+          <div class="tag">Essentielle</div>
+          <h3>Suivi de base</h3>
+          <div class="price">75 000 FCFA<br><span style="font-size:12px;color:var(--ink-soft);font-weight:400;">/ mois</span></div>
+          <ul><li>Tenue comptable mensuelle</li><li>Déclarations obligatoires</li><li>Support par e-mail</li></ul>
+          <button class="btn btn-ghost choose-btn" style="border:1px solid var(--line);">Choisir</button>
+        </div>
+        <div class="offer reco" data-formula="Professionnelle">
+          <div class="tag">Recommandée · Professionnelle</div>
+          <h3>Gestion accompagnée</h3>
+          <div class="price">140 000 FCFA<br><span style="font-size:12px;color:var(--ink-soft);font-weight:400;">/ mois</span></div>
+          <ul><li>Tout "Essentielle"</li><li>Clôture annuelle incluse</li><li>Conseiller dédié</li><li>Tableau de bord mensuel</li></ul>
+          <button class="btn btn-primary choose-btn">Choisir</button>
+        </div>
+        <div class="offer" data-formula="Premium">
+          <div class="tag">Premium</div>
+          <h3>Accompagnement complet</h3>
+          <div class="price">Sur devis</div>
+          <ul><li>Tout "Professionnelle"</li><li>Contrôle de gestion</li><li>Revue trimestrielle avec un expert</li></ul>
+          <button class="btn btn-ghost choose-btn" style="border:1px solid var(--line);">Choisir</button>
+        </div>
+      </div>
+      <p id="chosen-note" style="font-size:13px;color:var(--ink-soft);margin-top:14px;">Formule présélectionnée : <strong>Professionnelle</strong>. Cliquez "Choisir" sur une autre offre pour changer.</p>
+      <div id="confirmation" style="display:none;background:#DCEFE6;color:#1F7A5C;padding:14px 16px;border-radius:8px;font-size:14px;margin-top:16px;"></div>
+      <div class="nav-btns"><button class="btn btn-ghost" onclick="go(3)">Retour</button><button class="btn btn-primary" id="submit-quote" onclick="submitQuote()">Demander mon devis détaillé</button></div>
+    </div>
+
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+let selectedFormula = 'Professionnelle';
+let selectedService = 'Comptabilité';
+
+document.querySelectorAll('.option').forEach(o=>{
+  o.addEventListener('click', ()=>{
+    document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
+    o.classList.add('selected');
+    selectedService = o.textContent.trim();
+  });
+});
+
+document.querySelectorAll('.choose-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const offer = btn.closest('.offer');
+    selectedFormula = offer.dataset.formula;
+    document.querySelectorAll('.offer').forEach(o=>o.style.outline='none');
+    offer.style.outline = '2px solid var(--red)';
+    document.getElementById('chosen-note').innerHTML = 'Formule sélectionnée : <strong>' + selectedFormula + '</strong>.';
+  });
+});
+
+function go(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.querySelectorAll('.progress span').forEach((s,i)=>s.classList.toggle('done', i < n));
+}
+
+function submitQuote(){
+  const quote = { service: selectedService, formula: selectedFormula };
+  if (typeof currentUser === 'function' && currentUser()) {
+    addQuote(quote);
+    document.getElementById('confirmation').style.display = 'block';
+    document.getElementById('confirmation').innerHTML = 'Votre demande a été enregistrée. Un conseiller GestiON Afrique revient vers vous sous 24h ouvrées. <a href="dashboard.html" style="color:#1F7A5C;font-weight:700;">Voir dans mon espace →</a>';
+    document.getElementById('submit-quote').disabled = true;
+    document.getElementById('submit-quote').style.opacity = '.5';
+  } else {
+    localStorage.setItem('pending_quote', JSON.stringify(quote));
+    window.location.href = 'login.html?next=devis';
+  }
+}
+</script>
+</body>
+</html>

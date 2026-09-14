@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facture — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--line:#E4E3DF;--neutral:#F3F4F1;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);padding:40px 20px;}
+  h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;margin:0;}
+  .switch{max-width:800px;margin:0 auto 16px;display:flex;gap:8px;}
+  .switch button{padding:8px 16px;border:1px solid var(--line);background:#fff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;}
+  .switch button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .invoice{max-width:800px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:44px;}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:34px;width:34px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  .brand span{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;}
+  .meta{text-align:right;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+  .meta strong{color:var(--ink);}
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:13px;margin-bottom:32px;}
+  .parties .label{font-size:11px;text-transform:uppercase;color:var(--ink-soft);letter-spacing:.04em;margin-bottom:6px;}
+  table{width:100%;border-collapse:collapse;margin-bottom:24px;}
+  th,td{text-align:left;padding:10px 4px;font-size:13px;border-bottom:1px solid var(--line);}
+  th{color:var(--ink-soft);font-size:11px;text-transform:uppercase;}
+  td.num,th.num{text-align:right;}
+  .totals{margin-left:auto;width:260px;font-size:13px;}
+  .totals div{display:flex;justify-content:space-between;padding:6px 0;}
+  .totals .grand{font-weight:700;font-size:16px;border-top:1px solid var(--ink);padding-top:10px;margin-top:6px;}
+  .notice{margin-top:28px;padding:14px 16px;background:#FBEAEA;border-left:3px solid var(--red);font-size:12px;color:#7A1418;border-radius:4px;}
+  .legal{margin-top:20px;font-size:11px;color:var(--ink-soft);line-height:1.6;}
+  .view{display:none;}
+  .view.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="switch">
+  <button class="active" onclick="show('bj')">Modèle Bénin</button>
+  <button onclick="show('fr')">Modèle France</button>
+</div>
+
+<div class="view active" id="bj">
+<div class="invoice">
+  <div class="head">
+    <div class="brand"><img src="assets/gestion-icon.png" alt="">   <span><span class="bw">GestiON</span> <span class="bl">Afrique</span></span></div>
+    <div class="meta">
+      <strong>Facture n° BJ-2026-000187</strong><br>
+      Date d'émission : 12/09/2026<br>
+      Échéance : 27/09/2026
+    </div>
+  </div>
+  <div class="parties">
+    <div><div class="label">Émetteur</div>GestiON Afrique SARL<br>Cotonou, Bénin<br>IFU : 3202612345678</div>
+    <div><div class="label">Client</div>Boulangerie Kpodji<br>Cotonou, Bénin<br>IFU : 3202698765432</div>
+  </div>
+  <table>
+    <tr><th>Prestation</th><th class="num">Qté</th><th class="num">Prix unitaire</th><th class="num">Total</th></tr>
+    <tr><td>Tenue comptable — septembre 2026</td><td class="num">1</td><td class="num">75 000 FCFA</td><td class="num">75 000 FCFA</td></tr>
+  </table>
+  <div class="totals">
+    <div><span>Sous-total</span><span>75 000 FCFA</span></div>
+    <div><span>TVA (18 %)</span><span>13 500 FCFA</span></div>
+    <div class="grand"><span>Total</span><span>88 500 FCFA</span></div>
+  </div>
+  <div class="notice">
+    Ce document est une facture interne GestiON Afrique. Il ne constitue pas une <strong>facture normalisée DGI</strong> tant que l'intégration MECeF/e-MECeF n'est pas homologuée pour ce compte.
+  </div>
+</div>
+</div>
+
+<div class="view" id="fr">
+<div class="invoice">
+  <div class="head">
+    <div class="brand"><img src="assets/gestion-icon.png" alt="">   <span><span class="bw">GestiON</span> <span class="bl">Afrique</span></span></div>
+    <div class="meta">
+      <strong>Facture n° FR-2026-000412</strong><br>
+      Date d'émission : 12/09/2026<br>
+      Échéance : 12/10/2026
+    </div>
+  </div>
+  <div class="parties">
+    <div><div class="label">Émetteur</div>GestiON Afrique SAS<br>Paris, France<br>SIREN : 912 345 678 · TVA FR12 912345678</div>
+    <div><div class="label">Client</div>Nova Digital SARL<br>Lyon, France<br>SIREN : 887 654 321</div>
+  </div>
+  <table>
+    <tr><th>Prestation</th><th class="num">Qté</th><th class="num">Prix unitaire HT</th><th class="num">Total HT</th></tr>
+    <tr><td>Accompagnement transformation digitale — phase 1</td><td class="num">1</td><td class="num">3 200,00 €</td><td class="num">3 200,00 €</td></tr>
+  </table>
+  <div class="totals">
+    <div><span>Sous-total HT</span><span>3 200,00 €</span></div>
+    <div><span>TVA (20 %)</span><span>640,00 €</span></div>
+    <div class="grand"><span>Total TTC</span><span>3 840,00 €</span></div>
+  </div>
+  <div class="legal">
+    Pénalités de retard : taux BCE + 10 points. Indemnité forfaitaire pour frais de recouvrement : 40 €. Nature de l'opération : prestation de services.<br>
+    Émise conformément au calendrier de la réforme de facturation électronique en vigueur à la date d'émission — référence plateforme agréée (PDP) ajoutée dès l'intégration effective.
+  </div>
+</div>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.switch button').forEach((b,i)=>b.classList.toggle('active',(id==='bj'&&i===0)||(id==='fr'&&i===1)));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documents — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+
+  .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+  aside{background:#fff;border-right:1px solid var(--line);padding:24px 18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:32px;}
+  .brand img{height:28px;width:28px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  nav a{display:block;padding:10px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:4px;}
+  nav a.active{background:var(--neutral);color:var(--ink);font-weight:600;}
+
+  main{padding:36px 40px;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+  .search{padding:10px 14px;border:1px solid var(--line);border-radius:6px;font-size:14px;width:260px;}
+  .tags{display:flex;gap:8px;margin-bottom:20px;}
+  .tag{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;cursor:pointer;}
+  .tag.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  th,td{text-align:left;padding:13px 18px;font-size:14px;border-bottom:1px solid var(--line);}
+  th{font-size:12px;text-transform:uppercase;color:var(--ink-soft);background:var(--neutral);}
+  .doc-icon{display:inline-flex;width:30px;height:30px;border-radius:6px;background:#FBEAEA;align-items:center;justify-content:center;margin-right:10px;vertical-align:middle;}
+  .doc-icon svg{width:15px;height:15px;stroke:var(--red);}
+  .name-cell{display:flex;align-items:center;}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+    <nav>
+      <a href="dashboard.html">Tableau de bord</a>
+      <a href="devis.html">Devis</a>
+      <a href="facture.html">Factures</a>
+      <a href="mission.html">Missions</a>
+      <a class="active" href="#">Documents</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="#" onclick="logout();window.location.href='login.html';return false;">Déconnexion</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="top">
+      <div>
+        <h1>Vos documents</h1>
+        <p class="subtitle">Tout ce que GestiON Afrique vous a transmis ou demandé.</p>
+      </div>
+      <input class="search" id="search" placeholder="Rechercher un document..." oninput="renderDocs()">
+    </div>
+
+    <div class="tags">
+      <div class="tag active">Tous</div>
+      <div class="tag">Comptables</div>
+      <div class="tag">Fiscaux</div>
+      <div class="tag">RH</div>
+      <div class="tag">Juridiques</div>
+    </div>
+
+    <table>
+      <tr><th>Document</th><th>Mission</th><th>Version</th><th>Ajouté le</th><th></th></tr>
+      <tbody id="docs-body"></tbody>
+    </table>
+  </main>
+</div>
+<script src="assets/app.js"></script>
+<script>
+requireAuth();
+const docIcon = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>';
+function renderDocs(){
+  const term = document.getElementById('search').value.toLowerCase();
+  const docs = getDocuments().filter(d => d.name.toLowerCase().includes(term));
+  document.getElementById('docs-body').innerHTML = docs.length ? docs.map(d => `
+    <tr><td class="name-cell"><span class="doc-icon">${docIcon}</span>${d.name}</td><td>${d.mission}</td><td>${d.version}</td><td>${d.date}</td><td>Télécharger</td></tr>
+  `).join('') : '<tr><td colspan="5" style="color:var(--ink-soft);padding:20px;">Aucun document pour le moment.</td></tr>';
+}
+renderDocs();
+</script>
+</body>
+</html>

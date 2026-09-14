@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;}
+  *{box-sizing:border-box;}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;margin:0 0 6px;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);font-size:15px;margin:0 0 28px;}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:40px;width:380px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:28px;}
+  .brand img{height:30px;width:30px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  .tabs{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:24px;}
+  .tab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink-soft);}
+  .tab.active{background:var(--ink);color:#fff;}
+  label{display:block;font-size:13px;font-weight:600;margin:16px 0 6px;}
+  input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font-size:14px;font-family:'Inter',sans-serif;}
+  input:focus,select:focus{outline:2px solid var(--red);outline-offset:1px;border-color:var(--red);}
+  .btn{width:100%;margin-top:24px;padding:13px;border:none;border-radius:6px;background:var(--red);color:#fff;font-weight:600;font-size:15px;cursor:pointer;}
+  .btn:hover{background:var(--red-dark);}
+  .foot-link{text-align:center;font-size:13px;color:var(--ink-soft);margin-top:20px;}
+  .foot-link a{color:var(--red);font-weight:600;text-decoration:none;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+  <h1>Accédez à votre espace</h1>
+  <p class="subtitle">Devis, factures, missions et documents, au même endroit.</p>
+  <div id="hint" style="background:#FBEAEA;border-left:3px solid var(--red);padding:10px 12px;border-radius:4px;font-size:12px;color:#7A1418;margin-bottom:18px;">
+    Compte de démonstration : <strong>demo@societeabc.com</strong> / <strong>demo1234</strong>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="show('login')">Connexion</div>
+    <div class="tab" onclick="show('signup')">Créer un compte</div>
+  </div>
+
+  <div id="error" style="display:none;background:#FBEAEA;color:#7A1418;font-size:13px;padding:10px 12px;border-radius:6px;margin-bottom:10px;"></div>
+
+  <form id="login">
+    <label>Adresse e-mail</label>
+    <input type="email" id="login-email" placeholder="vous@entreprise.com">
+    <label>Mot de passe</label>
+    <input type="password" id="login-password" placeholder="••••••••">
+    <button type="button" class="btn" onclick="doLogin()">Se connecter</button>
+  </form>
+
+  <form id="signup" style="display:none;">
+    <div class="row2">
+      <div><label>Prénom</label><input type="text" id="signup-first"></div>
+      <div><label>Nom</label><input type="text" id="signup-last"></div>
+    </div>
+    <label>Adresse e-mail</label>
+    <input type="email" id="signup-email">
+    <label>Pays</label>
+    <select id="signup-country"><option>Bénin</option><option>France</option></select>
+    <label>Mot de passe</label>
+    <input type="password" id="signup-password">
+    <button type="button" class="btn" onclick="doSignup()">Créer mon compte</button>
+  </form>
+
+  <div class="foot-link">Besoin d'aide ? <a href="#">Contactez-nous</a></div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+function show(which){
+  document.getElementById('login').style.display = which==='login' ? 'block' : 'none';
+  document.getElementById('signup').style.display = which==='signup' ? 'block' : 'none';
+  document.getElementById('hint').style.display = which==='login' ? 'block' : 'none';
+  document.getElementById('error').style.display = 'none';
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active', (which==='login'&&i===0)||(which==='signup'&&i===1)));
+}
+function showError(msg){
+  const e = document.getElementById('error');
+  e.textContent = msg;
+  e.style.display = 'block';
+}
+function afterAuthRedirect(){
+  const pending = localStorage.getItem('pending_quote');
+  if (pending) {
+    addQuote(JSON.parse(pending));
+    localStorage.removeItem('pending_quote');
+  }
+  window.location.href = 'dashboard.html';
+}
+function doLogin(){
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  if(!email || !password){ showError('Merci de renseigner e-mail et mot de passe.'); return; }
+  const result = login(email, password);
+  if(result.error){ showError(result.error); return; }
+  afterAuthRedirect();
+}
+function doSignup(){
+  const firstName = document.getElementById('signup-first').value.trim();
+  const lastName = document.getElementById('signup-last').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const country = document.getElementById('signup-country').value;
+  const password = document.getElementById('signup-password').value;
+  if(!firstName || !lastName || !email || !password){ showError('Merci de remplir tous les champs.'); return; }
+  const result = signup({email, password, firstName, lastName, country});
+  if(result.error){ showError(result.error); return; }
+  afterAuthRedirect();
+}
+// si déjà connecté, redirection directe
+if (typeof currentUser === 'function' && currentUser()) {
+  window.location.href = 'dashboard.html';
+}
+</script>
+</body>
+</html>

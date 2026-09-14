@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--neutral);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+  .shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+  aside{background:#fff;border-right:1px solid var(--line);padding:24px 18px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:32px;}
+  .brand img{height:28px;width:28px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  nav a{display:block;padding:10px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:4px;}
+  nav a.active{background:var(--neutral);color:var(--ink);font-weight:600;}
+  main{padding:36px 40px;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+  .btn{background:var(--red);color:#fff;border:none;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  th,td{text-align:left;padding:13px 18px;font-size:14px;border-bottom:1px solid var(--line);}
+  th{font-size:12px;text-transform:uppercase;color:var(--ink-soft);background:var(--neutral);}
+  .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;}
+  .badge.ouvert{background:#FDE9C8;color:#8A5A16;}
+  .badge.cours{background:#DCE7F5;color:#245A9E;}
+  .badge.resolu{background:#DCEFE6;color:var(--emerald);}
+  .prio{font-size:12px;font-weight:600;}
+  .prio.haute{color:var(--red);}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></div>
+    <nav>
+      <a href="dashboard.html">Tableau de bord</a>
+      <a href="devis.html">Devis</a>
+      <a href="facture.html">Factures</a>
+      <a href="mission.html">Missions</a>
+      <a href="documents.html">Documents</a>
+      <a class="active" href="#">Tickets</a>
+      <a href="#" onclick="logout();window.location.href='login.html';return false;">Déconnexion</a>
+    </nav>
+  </aside>
+  <main>
+    <div class="top">
+      <div>
+        <h1>Support</h1>
+        <p class="subtitle">Une question sur un dossier ? Ouvrez un ticket, un conseiller répond.</p>
+      </div>
+      <button class="btn" onclick="toggleForm()">Nouveau ticket</button>
+    </div>
+
+    <div id="new-ticket-form" style="display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:20px;">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;">Sujet</label>
+      <input id="ticket-subject" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:14px;margin-bottom:12px;" placeholder="Ex : question sur ma dernière facture">
+      <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;">Priorité</label>
+      <select id="ticket-priority" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:14px;margin-bottom:14px;">
+        <option>Normale</option><option>Haute</option>
+      </select>
+      <button class="btn" onclick="createTicket()">Envoyer</button>
+    </div>
+
+    <table>
+      <tr><th>Sujet</th><th>Priorité</th><th>Statut</th><th>Mis à jour</th></tr>
+      <tbody id="tickets-body"></tbody>
+    </table>
+  </main>
+</div>
+<script src="assets/app.js"></script>
+<script>
+requireAuth();
+function toggleForm(){
+  const f = document.getElementById('new-ticket-form');
+  f.style.display = f.style.display === 'none' ? 'block' : 'none';
+}
+function statusClass(s){
+  if (s === 'En cours') return 'cours';
+  if (s === 'Résolu') return 'resolu';
+  return 'ouvert';
+}
+function renderTickets(){
+  const tickets = getTickets();
+  document.getElementById('tickets-body').innerHTML = tickets.length ? tickets.map(t => `
+    <tr><td>${t.subject}</td><td class="prio ${t.priority==='Haute'?'haute':''}">${t.priority}</td><td><span class="badge ${statusClass(t.status)}">${t.status}</span></td><td>${t.updated}</td></tr>
+  `).join('') : '<tr><td colspan="4" style="color:var(--ink-soft);padding:20px;">Aucun ticket pour le moment.</td></tr>';
+}
+function createTicket(){
+  const subject = document.getElementById('ticket-subject').value.trim();
+  const priority = document.getElementById('ticket-priority').value;
+  if(!subject) return;
+  addTicket({subject, priority});
+  document.getElementById('ticket-subject').value = '';
+  toggleForm();
+  renderTickets();
+}
+renderTickets();
+</script>
+</body>
+</html>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogue de services — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;}
+  .brand img{height:30px;width:30px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  header{border-bottom:1px solid var(--line);padding:18px 0;}
+  .nav{display:flex;justify-content:space-between;align-items:center;}
+  .btn{background:var(--red);color:#fff;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14px;}
+
+  .hero{padding:64px 0 40px;}
+  .hero h1{font-size:38px;max-width:640px;}
+  .hero p{max-width:600px;font-size:17px;margin-top:16px;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px 0 90px;}
+  .card{border:1px solid var(--line);border-radius:12px;padding:24px;display:block;}
+  .icon{width:44px;height:44px;border-radius:50%;background:#FBEAEA;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .icon svg{width:22px;height:22px;stroke:var(--red);}
+  .card h3{font-size:17px;margin-bottom:8px;}
+  .card p{margin:0;font-size:14px;color:var(--ink-soft);}
+
+  @media (max-width:860px){.grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></a>
+    <a class="btn" href="devis.html">Demander un devis</a>
+  </div>
+</header>
+
+<div class="hero container" style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;">
+  <div>
+    <h1>Un catalogue complet, pensé pour grandir avec vous</h1>
+    <p class="subtitle">Chaque famille de services peut être commandée à la mission ou intégrée à un abonnement. Certaines prestations — repérables ci-dessous — impliquent systématiquement la validation d'un professionnel habilité avant tout envoi au client.</p>
+  </div>
+  <img src="assets/illustrations/desk.svg" alt="" style="width:100%;border-radius:12px;">
+</div>
+
+<div class="container">
+<div class="grid">
+
+  <a class="card" href="service.html?s=comptabilite"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><path d="M8 16l2 2 4-4"/></svg></div><h3>Comptabilité</h3><p>Tenue, révision, rapprochement bancaire, clôture, préparation des états financiers.</p></a>
+
+  <a class="card" href="service.html?s=finance"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="13"/><line x1="9.5" y1="20" x2="9.5" y2="7"/><line x1="15" y1="20" x2="15" y2="15"/><line x1="20" y1="20" x2="20" y2="4"/></svg></div><h3>Finance</h3><p>Prévisionnel financier, analyse de rentabilité, structuration du financement.</p></a>
+
+  <a class="card" href="service.html?s=fiscalite"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1.3" fill="var(--red)" stroke="none"/><circle cx="15" cy="15" r="1.3" fill="var(--red)" stroke="none"/><line x1="8" y1="16" x2="16" y2="8"/></svg></div><h3>Fiscalité</h3><p>Déclarations, TVA, veille réglementaire par pays, accompagnement en cas de contrôle.</p></a>
+
+  <a class="card" href="service.html?s=rh"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.3"/><path d="M3.5 20c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6"/><path d="M13.5 20c0-2.8 1.7-4.8 4-5.2"/></svg></div><h3>Ressources humaines</h3><p>Recrutement, contrats, paie, congés, politiques RH, de l'embauche au départ.</p></a>
+
+  <a class="card" href="service.html?s=audit"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="12" height="15" rx="1"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="11" x2="13" y2="11"/><circle cx="16" cy="16" r="4"/><line x1="19" y1="19" x2="22" y2="22"/></svg></div><h3>Audit</h3><p>Financier, fiscal, RH, organisationnel, informatique ou de conformité.</p></a>
+
+  <a class="card" href="service.html?s=cdg"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="13"/><line x1="9.5" y1="20" x2="9.5" y2="7"/><line x1="15" y1="20" x2="15" y2="15"/><line x1="20" y1="20" x2="20" y2="4"/><path d="M4 9l6-4 6 5 6-6"/></svg></div><h3>Contrôle de gestion</h3><p>Budgets, prévisions, tableaux de bord, KPI, trésorerie.</p></a>
+
+  <a class="card" href="service.html?s=juridique"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="19"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div><h3>Juridique <span style="font-size:11px;color:var(--red);font-weight:700;">· validation requise</span></h3><p>Statuts, contrats commerciaux, CGV/CGU, conformité, droit des affaires.</p></a>
+
+  <a class="card" href="service.html?s=creation"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6 6-6 0 4-2 6-6 6z"/><path d="M12 15.5c0-2.8-2.2-4.8-5-4.8 0 3.1 1.8 5 5 5z"/></svg></div><h3>Création d'entreprise <span style="font-size:11px;color:var(--red);font-weight:700;">· validation requise</span></h3><p>Parcours guidé : forme juridique, coûts, calendrier, documents nécessaires.</p></a>
+
+  <a class="card" href="service.html?s=admin"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l3 4v9H3z"/><line x1="3" y1="7" x2="3" y2="20"/><line x1="7" y1="11" x2="13" y2="11"/></svg></div><h3>Gestion administrative</h3><p>Secrétariat externalisé, classement, archivage, suivi des échéances.</p></a>
+
+  <a class="card" href="service.html?s=marketing"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l16-7v16l-16-7z"/><path d="M3 11v5a3 3 0 0 0 3 3"/></svg></div><h3>Marketing</h3><p>Stratégie, identité visuelle, publicité digitale, SEO, génération de leads.</p></a>
+
+  <a class="card" href="service.html?s=communication"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-4 4V5z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12" x2="13" y2="12"/></svg></div><h3>Communication</h3><p>Contenu, réseaux sociaux, community management, relations presse.</p></a>
+
+  <a class="card" href="service.html?s=formation"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l8-5 8 5-8 5-8-5z"/><path d="M8 12.5V17c0 1.4 4 3 4 3s4-1.6 4-3v-4.5"/></svg></div><h3>Formation</h3><p>GestiON Academy : comptabilité, RH, management, IA, Excel, gestion de projet.</p></a>
+
+  <a class="card" href="service.html?s=digital"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="6.7" y1="7.2" x2="10.5" y2="16.4"/><line x1="17.3" y1="7.2" x2="13.5" y2="16.4"/><line x1="7" y1="6" x2="17" y2="6"/></svg></div><h3>Transformation digitale</h3><p>Automatisation, CRM, ERP, outils collaboratifs, intégration de l'IA.</p></a>
+
+  <a class="card" href="service.html?s=info"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="1.5"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg></div><h3>Informatique</h3><p>Cybersécurité, développement logiciel, sites web, applications mobiles.</p></a>
+
+  <a class="card" href="service.html?s=conseil"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="var(--red)" stroke="none"/></svg></div><h3>Conseil stratégique</h3><p>Diagnostic global, priorisation, accompagnement des décisions structurantes.</p></a>
+
+  <a class="card" href="service.html?s=achats"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3" fill="var(--red)" stroke="none"/><circle cx="18" cy="20" r="1.3" fill="var(--red)" stroke="none"/><path d="M2 4h3l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/></svg></div><h3>Achats</h3><p>Sourcing fournisseurs, négociation, suivi des commandes et des contrats cadres.</p></a>
+
+  <a class="card" href="service.html?s=docs"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11H4z"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></div><h3>Gestion documentaire</h3><p>Coffre-fort numérique, classement, recherche, contrôle d'accès, versioning.</p></a>
+
+  <a class="card" href="service.html?s=secretariat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V7a4 4 0 0 1 8 0v2"/><rect x="4" y="9" width="16" height="11" rx="2"/></svg></div><h3>Secrétariat externalisé</h3><p>Accueil téléphonique, gestion du courrier, prise de rendez-vous.</p></a>
+
+</div>
+</div>
+
+</body>
+</html>

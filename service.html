@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Service — GestiON Afrique</title>
+<link rel="icon" type="image/png" href="assets/gestion-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C41E24;--red-dark:#9A171C;--ink:#111;--ink-soft:#55564F;--paper:#fff;--neutral:#F3F4F1;--line:#E4E3DF;--emerald:#1F7A5C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;margin:0;}
+  .subtitle{font-family:'Lora',serif;font-style:italic;color:var(--ink-soft);}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 32px;}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;}
+  .brand img{height:30px;width:30px;}
+  .brand .bw{font-weight:700;}
+  .brand .bl{font-weight:400;color:var(--ink-soft);margin-left:2px;}
+  header{border-bottom:1px solid var(--line);padding:18px 0;}
+  .nav{display:flex;justify-content:space-between;align-items:center;}
+  .btn{background:var(--red);color:#fff;padding:12px 22px;border-radius:6px;font-weight:600;font-size:14px;border:none;cursor:pointer;display:inline-block;}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);padding:12px 22px;border-radius:6px;font-weight:600;font-size:14px;display:inline-block;}
+
+  .breadcrumb{font-size:13px;color:var(--ink-soft);padding:20px 0 0;}
+  .breadcrumb a{color:var(--red);font-weight:600;}
+
+  .hero{display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start;padding:24px 0 8px;}
+  .hero .icon{width:56px;height:56px;border-radius:50%;background:#FBEAEA;display:flex;align-items:center;justify-content:center;}
+  .hero .icon svg{width:28px;height:28px;stroke:var(--red);}
+  .hero h1{font-size:32px;max-width:640px;}
+  .hero .cat{font-size:13px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:6px;}
+  .hero p.lead{font-size:17px;color:var(--ink-soft);max-width:640px;margin-top:14px;}
+  .validation-flag{display:inline-flex;align-items:center;gap:6px;background:#FBEAEA;color:#7A1418;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;margin-top:14px;}
+
+  .cta-row{display:flex;gap:14px;margin:28px 0 10px;}
+
+  .grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;padding:36px 0 90px;}
+  .block{margin-bottom:36px;}
+  .block h2{font-size:20px;margin-bottom:14px;}
+  .includes{list-style:none;padding:0;margin:0;}
+  .includes li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;display:flex;gap:10px;}
+  .includes li svg{width:18px;height:18px;stroke:var(--emerald);flex:none;margin-top:1px;}
+
+  .process-list{counter-reset:step;list-style:none;padding:0;margin:0;}
+  .process-list li{counter-increment:step;padding:14px 0 14px 40px;position:relative;border-bottom:1px solid var(--line);font-size:14px;}
+  .process-list li::before{content:counter(step);position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .process-list li strong{display:block;font-size:14px;margin-bottom:2px;}
+
+  .sidebar{background:var(--neutral);border-radius:12px;padding:26px;align-self:start;position:sticky;top:24px;}
+  .sidebar .price{font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;margin-bottom:4px;}
+  .sidebar .price-note{font-size:13px;color:var(--ink-soft);margin-bottom:20px;}
+  .sidebar .btn{width:100%;text-align:center;margin-bottom:10px;}
+  .sidebar .btn-outline{width:100%;text-align:center;}
+  .sidebar hr{border:none;border-top:1px solid var(--line);margin:20px 0;}
+  .sidebar .fact{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;color:var(--ink-soft);}
+  .sidebar .fact strong{color:var(--ink);}
+
+  .related{padding:0 0 90px;}
+  .related h2{font-size:20px;margin-bottom:18px;}
+  .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .related-card{border:1px solid var(--line);border-radius:10px;padding:16px;font-size:13px;font-weight:600;}
+  .related-card .icon-sm{width:30px;height:30px;border-radius:50%;background:#FBEAEA;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .related-card .icon-sm svg{width:15px;height:15px;stroke:var(--red);}
+
+  @media (max-width:900px){.grid2{grid-template-columns:1fr;} .related-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="assets/gestion-icon.png" alt=""><span class="bw">GestiON</span> <span class="bl">Afrique</span></a>
+    <a class="btn" href="devis.html">Demander un devis</a>
+  </div>
+</header>
+
+<div class="container breadcrumb"><a href="services.html">Catalogue de services</a> / <span id="crumb-name"></span></div>
+
+<div class="container hero">
+  <div class="icon" id="hero-icon"></div>
+  <div>
+    <div class="cat" id="hero-cat"></div>
+    <h1 id="hero-title"></h1>
+    <p class="lead" id="hero-desc"></p>
+    <div id="validation-flag"></div>
+    <div class="cta-row">
+      <a class="btn" href="devis.html">Demander un devis</a>
+      <a class="btn-outline" href="services.html">Voir tout le catalogue</a>
+    </div>
+  </div>
+</div>
+
+<div class="container grid2">
+  <div>
+    <div class="block">
+      <h2>Ce qui est inclus</h2>
+      <ul class="includes" id="includes-list"></ul>
+    </div>
+    <div class="block">
+      <h2>Comment ça se passe</h2>
+      <ol class="process-list" id="process-list"></ol>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="price" id="sidebar-price"></div>
+    <div class="price-note" id="sidebar-price-note"></div>
+    <a class="btn" href="devis.html">Demander un devis</a>
+    <a class="btn-outline" href="login.html">Voir dans mon espace</a>
+    <hr>
+    <div class="fact"><span>Délai habituel</span><strong id="fact-delay"></strong></div>
+    <div class="fact"><span>Pays disponibles</span><strong>Bénin, France</strong></div>
+    <div class="fact"><span>Validation humaine</span><strong id="fact-validation"></strong></div>
+  </div>
+</div>
+
+<div class="container related">
+  <h2>Voir aussi</h2>
+  <div class="related-grid" id="related-grid"></div>
+</div>
+
+<script>
+const ICONS = {
+  comptabilite: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><path d="M8 16l2 2 4-4"/></svg>',
+  finance: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="13"/><line x1="9.5" y1="20" x2="9.5" y2="7"/><line x1="15" y1="20" x2="15" y2="15"/><line x1="20" y1="20" x2="20" y2="4"/></svg>',
+  fiscalite: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1.3" fill="#C41E24" stroke="none"/><circle cx="15" cy="15" r="1.3" fill="#C41E24" stroke="none"/><line x1="8" y1="16" x2="16" y2="8"/></svg>',
+  rh: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.3"/><path d="M3.5 20c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6"/><path d="M13.5 20c0-2.8 1.7-4.8 4-5.2"/></svg>',
+  audit: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="12" height="15" rx="1"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="11" x2="13" y2="11"/><circle cx="16" cy="16" r="4"/><line x1="19" y1="19" x2="22" y2="22"/></svg>',
+  cdg: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="13"/><line x1="9.5" y1="20" x2="9.5" y2="7"/><line x1="15" y1="20" x2="15" y2="15"/><line x1="20" y1="20" x2="20" y2="4"/><path d="M4 9l6-4 6 5 6-6"/></svg>',
+  juridique: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="19"/><line x1="5" y1="7" x2="19" y2="7"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/><line x1="8" y1="21" x2="16" y2="21"/></svg>',
+  creation: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6 6-6 0 4-2 6-6 6z"/><path d="M12 15.5c0-2.8-2.2-4.8-5-4.8 0 3.1 1.8 5 5 5z"/></svg>',
+  admin: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l3 4v9H3z"/><line x1="3" y1="7" x2="3" y2="20"/><line x1="7" y1="11" x2="13" y2="11"/></svg>',
+  marketing: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l16-7v16l-16-7z"/><path d="M3 11v5a3 3 0 0 0 3 3"/></svg>',
+  communication: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-4 4V5z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12" x2="13" y2="12"/></svg>',
+  formation: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l8-5 8 5-8 5-8-5z"/><path d="M8 12.5V17c0 1.4 4 3 4 3s4-1.6 4-3v-4.5"/></svg>',
+  digital: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="6.7" y1="7.2" x2="10.5" y2="16.4"/><line x1="17.3" y1="7.2" x2="13.5" y2="16.4"/><line x1="7" y1="6" x2="17" y2="6"/></svg>',
+  info: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="1.5"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg>',
+  conseil: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#C41E24" stroke="none"/></svg>',
+  achats: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3" fill="#C41E24" stroke="none"/><circle cx="18" cy="20" r="1.3" fill="#C41E24" stroke="none"/><path d="M2 4h3l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/></svg>',
+  docs: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11H4z"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>',
+  secretariat: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V7a4 4 0 0 1 8 0v2"/><rect x="4" y="9" width="16" height="11" rx="2"/></svg>',
+};
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>';
+
+const SERVICES = {
+  comptabilite: { name:"Comptabilité", icon:"comptabilite", desc:"Tenue, révision, rapprochement bancaire, clôture et préparation de vos états financiers — en externalisation totale ou en appui de votre équipe interne.",
+    includes:["Saisie et tenue comptable mensuelle","Rapprochement bancaire","Clôture d'exercice et états financiers","Suivi des immobilisations et des tiers","Reporting mensuel simplifié"],
+    price:"À partir de 75 000 FCFA/mois", priceNote:"Selon le volume de transactions et la taille de l'entreprise.", delay:"Mise en place sous 1 semaine", validation:false },
+  finance: { name:"Finance", icon:"finance", desc:"Prévisionnel financier, analyse de rentabilité et structuration du financement pour préparer vos décisions d'investissement.",
+    includes:["Prévisionnel financier à 12-36 mois","Analyse de rentabilité par activité","Structuration de plans de financement","Présentation aux partenaires financiers"],
+    price:"Sur devis", priceNote:"Selon la complexité du dossier.", delay:"2 à 4 semaines", validation:false },
+  fiscalite: { name:"Fiscalité", icon:"fiscalite", desc:"Déclarations, TVA, veille réglementaire par pays et accompagnement en cas de contrôle fiscal.",
+    includes:["Déclarations fiscales périodiques","Suivi et déclaration de TVA","Veille réglementaire par pays","Accompagnement en cas de contrôle fiscal"],
+    price:"À partir de 45 000 FCFA/mois", priceNote:"Selon le nombre de déclarations à traiter.", delay:"Mise en place sous 1 semaine", validation:true },
+  rh: { name:"Ressources humaines", icon:"rh", desc:"Recrutement, contrats, paie, congés et politiques RH, de l'embauche au départ de vos collaborateurs.",
+    includes:["Recrutement et rédaction des contrats","Gestion de la paie mensuelle","Suivi des congés et absences","Rédaction du règlement intérieur"],
+    price:"À partir de 60 000 FCFA/mois", priceNote:"Selon l'effectif géré.", delay:"2 semaines de mise en place", validation:true },
+  audit: { name:"Audit", icon:"audit", desc:"Financier, fiscal, RH, organisationnel ou de conformité — cadrage par questionnaire, puis mission dédiée avec un consultant senior.",
+    includes:["Questionnaire de cadrage intelligent","Fiche de cadrage préparée","Mission d'audit sur site ou à distance","Rapport détaillé avec recommandations"],
+    price:"À partir de 350 000 FCFA", priceNote:"Selon le périmètre et la taille de l'entreprise.", delay:"3 à 6 semaines", validation:true },
+  cdg: { name:"Contrôle de gestion", icon:"cdg", desc:"Budgets, prévisions, tableaux de bord, KPI et suivi de trésorerie pour piloter vos décisions au bon moment.",
+    includes:["Construction de tableaux de bord","Suivi budgétaire mensuel","Analyse des écarts","Suivi de trésorerie"],
+    price:"À partir de 80 000 FCFA/mois", priceNote:"Selon la fréquence de reporting souhaitée.", delay:"2 semaines de mise en place", validation:false },
+  juridique: { name:"Juridique", icon:"juridique", desc:"Statuts, contrats commerciaux, CGV/CGU et conformité — toujours validés par un professionnel habilité avant envoi.",
+    includes:["Rédaction de statuts et contrats","CGV / CGU sur mesure","Veille de conformité","Accompagnement en droit des affaires"],
+    price:"À partir de 100 000 FCFA", priceNote:"Selon la nature du document ou de la mission.", delay:"1 à 3 semaines", validation:true },
+  creation: { name:"Création d'entreprise", icon:"creation", desc:"Un parcours guidé — forme juridique, coûts, calendrier et documents nécessaires — jusqu'au devis d'accompagnement complet.",
+    includes:["Questionnaire de cadrage du projet","Choix de la forme juridique","Checklist des documents nécessaires","Estimation des coûts et calendrier"],
+    price:"À partir de 150 000 FCFA", priceNote:"Selon le pays et la forme juridique choisie.", delay:"2 à 4 semaines", validation:true },
+  admin: { name:"Gestion administrative", icon:"admin", desc:"Secrétariat externalisé, classement, archivage et suivi des échéances pour libérer du temps à vos équipes.",
+    includes:["Classement et archivage","Suivi des échéances administratives","Préparation de dossiers","Gestion du courrier entrant"],
+    price:"À partir de 50 000 FCFA/mois", priceNote:"Selon le volume de documents.", delay:"1 semaine de mise en place", validation:false },
+  marketing: { name:"Marketing", icon:"marketing", desc:"Stratégie, identité visuelle, publicité digitale, SEO et génération de leads pour développer votre visibilité.",
+    includes:["Stratégie marketing sur mesure","Création de contenu","Campagnes publicitaires digitales","Référencement (SEO)"],
+    price:"À partir de 90 000 FCFA/mois", priceNote:"Selon les canaux activés.", delay:"2 semaines de mise en place", validation:false },
+  communication: { name:"Communication", icon:"communication", desc:"Contenu, réseaux sociaux, community management et relations presse pour porter la voix de votre entreprise.",
+    includes:["Community management","Création de contenus visuels","Calendrier éditorial mensuel","Relations presse ponctuelles"],
+    price:"À partir de 70 000 FCFA/mois", priceNote:"Selon le nombre de canaux gérés.", delay:"1 à 2 semaines", validation:false },
+  formation: { name:"Formation", icon:"formation", desc:"L'accès à GestiON Academy : des formations courtes et pratiques sur la gestion d'entreprise, avec tuteur IA inclus.",
+    includes:["Accès au catalogue GestiON Academy","Tuteur IA sur chaque cours","Certificats vérifiables","Suivi de progression"],
+    price:"Dès Gratuit, jusqu'à 150 000 FCFA/cours", priceNote:"Voir le catalogue complet des 20 formations.", delay:"Accès immédiat", validation:false },
+  digital: { name:"Transformation digitale", icon:"digital", desc:"Automatisation, CRM, ERP, outils collaboratifs et intégration de l'IA dans vos processus quotidiens.",
+    includes:["Audit des processus actuels","Mise en place d'un CRM","Automatisation des tâches répétitives","Intégration d'outils IA"],
+    price:"À partir de 200 000 FCFA", priceNote:"Selon l'ampleur du projet.", delay:"4 à 8 semaines", validation:false },
+  info: { name:"Informatique", icon:"info", desc:"Cybersécurité, développement logiciel, sites web et applications mobiles pour soutenir votre croissance.",
+    includes:["Audit de cybersécurité","Développement sur mesure","Site web professionnel","Maintenance et support"],
+    price:"Sur devis", priceNote:"Selon la nature du projet technique.", delay:"Variable selon le projet", validation:false },
+  conseil: { name:"Conseil stratégique", icon:"conseil", desc:"Diagnostic global, priorisation et accompagnement des décisions structurantes pour votre entreprise.",
+    includes:["Diagnostic global de l'entreprise","Atelier de priorisation","Plan d'action à 90 jours","Suivi mensuel des décisions"],
+    price:"À partir de 250 000 FCFA", priceNote:"Selon la durée d'accompagnement.", delay:"Sur rendez-vous", validation:false },
+  achats: { name:"Achats", icon:"achats", desc:"Sourcing fournisseurs, négociation et suivi des commandes et des contrats cadres pour optimiser vos coûts.",
+    includes:["Sourcing de fournisseurs","Négociation des contrats","Suivi des commandes","Optimisation des coûts d'achat"],
+    price:"À partir de 60 000 FCFA/mois", priceNote:"Selon le volume d'achats géré.", delay:"2 semaines de mise en place", validation:false },
+  docs: { name:"Gestion documentaire", icon:"docs", desc:"Coffre-fort numérique, classement, recherche, contrôle d'accès et versioning pour tous vos documents sensibles.",
+    includes:["Coffre-fort numérique sécurisé","Classement par tags et dossiers","Contrôle d'accès par rôle","Historique des versions"],
+    price:"Inclus dans l'espace client", priceNote:"Aucun coût additionnel pour les clients GestiON Afrique.", delay:"Immédiat", validation:false },
+  secretariat: { name:"Secrétariat externalisé", icon:"secretariat", desc:"Accueil téléphonique, gestion du courrier et prise de rendez-vous pour professionnaliser votre premier contact client.",
+    includes:["Accueil téléphonique professionnel","Gestion du courrier","Prise de rendez-vous","Transfert d'appels qualifiés"],
+    price:"À partir de 40 000 FCFA/mois", priceNote:"Selon le volume d'appels.", delay:"1 semaine de mise en place", validation:false },
+};
+
+const PROCESS = [
+  {t:"Décrivez votre besoin", d:"Un questionnaire court adapte les questions à votre secteur et à votre pays."},
+  {t:"Recevez une estimation", d:"Une fourchette de prix indicative, puis un devis détaillé sur demande."},
+  {t:"Signez et payez", d:"Signature électronique et paiement en ligne selon les moyens disponibles dans votre pays."},
+  {t:"Suivez la mission", d:"Statut, tâches et documents demandés, visibles en direct depuis votre espace."},
+];
+
+function getSlug(){
+  const match = window.location.search.match(/[?&]s=([^&]+)/);
+  return match ? decodeURIComponent(match[1]) : 'comptabilite';
+}
+
+function render(){
+  const slug = getSlug();
+  const s = SERVICES[slug] || SERVICES.comptabilite;
+
+  document.getElementById('page-title').textContent = s.name + ' — GestiON Afrique';
+  document.getElementById('crumb-name').textContent = s.name;
+  document.getElementById('hero-icon').innerHTML = ICONS[s.icon];
+  document.getElementById('hero-cat').textContent = s.name;
+  document.getElementById('hero-title').textContent = s.name;
+  document.getElementById('hero-desc').textContent = s.desc;
+  document.getElementById('validation-flag').innerHTML = s.validation
+    ? '<span class="validation-flag">⚠ Nécessite la validation d\'un professionnel habilité avant tout envoi</span>' : '';
+
+  document.getElementById('includes-list').innerHTML = s.includes.map(i => `<li>${CHECK}${i}</li>`).join('');
+  document.getElementById('process-list').innerHTML = PROCESS.map(p => `<li><strong>${p.t}</strong>${p.d}</li>`).join('');
+
+  document.getElementById('sidebar-price').textContent = s.price;
+  document.getElementById('sidebar-price-note').textContent = s.priceNote;
+  document.getElementById('fact-delay').textContent = s.delay;
+  document.getElementById('fact-validation').textContent = s.validation ? 'Oui, systématique' : 'Non requise';
+
+  const others = Object.keys(SERVICES).filter(k => k !== slug);
+  const shuffled = others.sort(() => 0.5 - Math.random()).slice(0, 4);
+  document.getElementById('related-grid').innerHTML = shuffled.map(k => `
+    <a class="related-card" href="service.html?s=${k}">
+      <div class="icon-sm">${ICONS[SERVICES[k].icon]}</div>
+      ${SERVICES[k].name}
+    </a>
+  `).join('');
+}
+render();
+</script>
+
+</body>
+</html>
